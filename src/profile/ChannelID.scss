@@ -1,0 +1,38 @@
+@import "../theme/theme.scss";
+.ChannelID-item {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  & .md-form {
+    flex-grow: 10;
+  }
+  & input {
+    width: 100%;
+    border-color: $text !important;
+    &:focus:not([readonly]) { /* input box underline color */
+      box-shadow: 0 1px 0 0 $text;
+    }
+  }
+  .setup {
+    // margin-left: auto;
+    transition: all .3s ease-out;
+    & .fa::before {
+      background: transparent;
+    }
+    & .fa:hover {
+      color: red;
+      transform: translate(0, -1px);
+      cursor: pointer;
+    }
+    & .fa-edit:hover {
+      color: orange;
+    }
+    & .fa-check:hover {
+      color: green;
+    }
+  }
+}

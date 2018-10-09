@@ -53,6 +53,12 @@ class Header extends Component {
     const authenticatedOptions = (
       <React.Fragment>
         <NavItem>
+          <NavLink to="/profile">
+            <Fa className="mr-2" icon="user" size="xs" />
+            Profile
+          </NavLink>
+        </NavItem>
+        <NavItem>
           <Dropdown size="md">
             <DropdownToggle nav caret>
               <Fa icon="cog" size="xs" />
@@ -112,7 +118,7 @@ class Header extends Component {
       <header className="main-header">
         <Navbar className="Navbar" dark expand="md" scrolling>
           <NavbarBrand>
-            <strong>Uber</strong>
+            <strong>YoutubeX</strong>
           </NavbarBrand>
           <VisibilitySensor onChange={this.visibleChange}>
             <NavbarToggler onClick={this.onClick} />
@@ -121,6 +127,7 @@ class Header extends Component {
             <NavbarNav left>{alwaysOptions}</NavbarNav>
             <NavbarNav right>
               {user && <NavItem><NavLink to='/'>Welcome, {user.email}</NavLink></NavItem>}
+              
               {user ? authenticatedOptions : unauthenticatedOptions}
             </NavbarNav>
           </Collapse>

@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
 import Home from './home/Home'
+import Profile from './profile/Profile'
 
 class App extends Component {
   constructor () {
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   setUser = user => {
-    console.log(user)
+    console.log('user', user)
     this.setState({ user })
   }
 
@@ -61,6 +62,9 @@ class App extends Component {
           )} />
           <Route user={user} exact path='/' render={() => (
             <Home />
+          )} />
+          <AuthenticatedRoute user={user} path='/profile' render={() => (
+            <Profile flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>

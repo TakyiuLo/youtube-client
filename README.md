@@ -26,4 +26,9 @@ Youtube API
     -  A user wanted to change Youtube account.
     -  A user wanted to play their playlists.
 
-#Deployment
+# Planning
+1 user can crud yotube id
+2 user can fetch playlist
+3 user can search
+4 user can add to playlist
+5 non-user can search
