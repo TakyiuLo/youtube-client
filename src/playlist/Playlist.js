@@ -5,6 +5,14 @@ import axios from 'axios'
 import './Playlist.scss'
 import { Index, Post, Delete, Update } from '../profile/api'
 import { getUrl, getToken, getPlaylist } from './api'
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  Fa,
+  ListGroup,
+  ListGroupItem
+} from 'mdbreact'
 
 class Playlist extends Component {
   constructor() {
@@ -12,6 +20,7 @@ class Playlist extends Component {
     
     this.state = {
       channelIds: [],
+      playlists: []
     }
   }
   
@@ -45,7 +54,11 @@ class Playlist extends Component {
               // get playlist
               return getPlaylist(user, res.data.data.access_token)
             })
-            .then(console.log)
+            .then((response) => {
+              console.log('Playlist: ', response.data.data.filteredPlaylists)
+              this.setState({ playlists: response.data.data.filteredPlaylists })
+              
+            })
             .catch(console.error)
         }
         window.addEventListener('message', codeListener)
@@ -53,12 +66,31 @@ class Playlist extends Component {
       .catch(() => flash('Permission Denied', 'flash-err'))
   }
   
+  playlist = () => (
+    this.state.playlists.map(playlist => 
+      <ListGroupItem 
+        className="playlistItem"
+        key={playlist.id}>
+        <h5>{playlist.title}</h5>
+        <div className="embed-responsive embed-responsive-21by9 video mb-2">          
+          <iframe 
+            className="embed-responsive-item"
+            src={`http://www.youtube.com/embed?listType=playlist&list=${playlist.id}&index=1`}
+            frameBorder='0'
+            allow="autoplay"
+          ></iframe>
+        </div>
+      </ListGroupItem>
+    )
+  )
+  
   render () {
     const { flash, user } = this.props
     return (
-      <div className="Playlist container m-5 p-1">
+      <ListGroup className="Playlist container m-5 p-1">
         Playlist
-      </div>
+        {this.state.playlists.length !== 0 && this.playlist()}
+      </ListGroup>
     )
   }
 }

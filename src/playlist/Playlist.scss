@@ -1,4 +1,23 @@
 .Playlist {
   background: white;
-  width: auto;
+  // width: auto;
+  min-width: 300px;
+  .playlistItem {
+
+    h5 {
+      font-family: 'Open Sans', sans-serif;
+    }
+    .video {
+
+      margin: 0;
+      iframe {
+        // min-width: 300px;
+        // width: 100%;
+        // max-width: 640px;
+        // min-height: 200px;
+        // height: 100%;
+        // max-height: 480px;
+      }
+    }
+  }
 }
