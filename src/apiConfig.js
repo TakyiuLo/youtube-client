@@ -1,6 +1,6 @@
 let apiUrl
 const apiUrls = {
-  production: '<replace-with-heroku-url>',
+  production: 'https://sheltered-fortress-64728.herokuapp.com',
   development: 'http://localhost:4741'
 }
 
