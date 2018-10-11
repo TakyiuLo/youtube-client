@@ -21,7 +21,7 @@ class Search extends Component {
   })
   search = event => {
     const { searchText } = this.state
-    console.log('search text: ', searchText)
+    // console.log('search text: ', searchText)
   }
   
   render () {

@@ -27,7 +27,7 @@ Youtube API
     -  A user wanted to play their playlists.
 
 # Planning
-1 user can crud yotube id
+ok1 user can crud yotube id
 2 user can fetch playlist
 3 user can search
 4 user can add to playlist

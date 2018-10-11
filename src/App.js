@@ -11,7 +11,8 @@ import ChangePassword from './auth/components/ChangePassword'
 
 import Home from './home/Home'
 import Profile from './profile/Profile'
-
+import Playlist from './playlist/Playlist'
+import Oauthcallback from './oauthcallback/Oauthcallback'
 class App extends Component {
   constructor () {
     super()
@@ -24,7 +25,7 @@ class App extends Component {
   }
 
   setUser = user => {
-    console.log('user', user)
+    // console.log('user', user)
     this.setState({ user })
   }
 
@@ -65,6 +66,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/profile' render={() => (
             <Profile flash={this.flash} user={user} />
+          )} />
+          <Route user={user} path='/oauthcallback' render={() => (
+            <Oauthcallback flash={this.flash} user={user}/>
+          )} />
+          <AuthenticatedRoute user={user} path='/playlist' render={() => (
+            <Playlist flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>

@@ -43,7 +43,7 @@ class Header extends Component {
       this.setState({
         user: this.props.user
       })
-      console.log('new user')
+      // console.log('new user')
     }
   }
   render() {
@@ -56,6 +56,12 @@ class Header extends Component {
           <NavLink to="/profile">
             <Fa className="mr-2" icon="user" size="xs" />
             Profile
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/playlist">
+            <Fa className="mr-2" icon="youtube-play" size="xs" />
+            Playlist
           </NavLink>
         </NavItem>
         <NavItem>

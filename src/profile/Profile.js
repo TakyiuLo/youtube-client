@@ -31,7 +31,10 @@ class Profile extends Component {
   getProfiles = async () => {
     const { user, flash } = this.props
     await Index(user)
-      .then((res) => this.setState({ profiles: res.data.profiles }))
+      .then((res) => {
+        this.setState({ profiles: res.data.profiles })
+        console.log('Profiles', res.data.profiles)
+      })
       .catch(err => flash('Fail To get profiles', 'flash-error'))
   }
   
