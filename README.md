@@ -44,10 +44,10 @@ some concepts. I sometimes use Google, StackOverflow for more guidance.
   - Axios
   - Github
 
-# Wireframe:
+# Wireframe
 [Imgur](https://i.imgur.com/uruqTvm.png)
 
-# User Stories:
+# User Stories
 Version One:
 When a user signed in: 
   - the user can see all their channel id
