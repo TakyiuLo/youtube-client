@@ -3,12 +3,12 @@ YoutubeX is a Youtube Account management tool. For now, a user can create, edit,
 and save their favorite channel with a channel id.
 
 # Planning
-ok 1 user can crud channel id
-no 2 users can fetch playlist
-no 3 users can search
-no 4 users can add to playlist
-no 5 non-user can search
-`*no means haven't done yet`
+- ok 1 user can crud channel id
+- no 2 users can fetch playlist
+- no 3 users can search
+- no 4 users can add to playlist
+- no 5 non-user can search
+- `*no means haven't done yet`
 
 # Process
 The user can now do crud for their channel id. It is a simple CRUD app built with
@@ -62,7 +62,7 @@ Version Two:
   - change channel id to playlist id
 
 # References
-[Frontend Github](https://github.com/TakyiuLo/youtube-client)
-[Frontend Deploy Site](https://takyiulo.github.io/youtube-client/)
-[Backend Github](https://github.com/TakyiuLo/youtube-api)
-[Backend Deploy Site](https://sheltered-fortress-64728.herokuapp.com/)
+- [Frontend Github](https://github.com/TakyiuLo/youtube-client)
+- [Frontend Deploy Site](https://takyiulo.github.io/youtube-client/)
+- [Backend Github](https://github.com/TakyiuLo/youtube-api)
+- [Backend Deploy Site](https://sheltered-fortress-64728.herokuapp.com/)
