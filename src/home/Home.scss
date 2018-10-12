@@ -1,4 +1,6 @@
+@import '../theme/theme.scss';
 .Homepage {
-  background: white;
+  background: $dark-bg;
   width: auto;
+  border-radius: 5px;
 }

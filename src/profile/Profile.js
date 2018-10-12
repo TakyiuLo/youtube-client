@@ -6,6 +6,7 @@ import apiUrl from '../apiConfig'
 import ChannelID from './ChannelID'
 import { Index, Post, Delete, Update } from './api'
 import {
+  Animation,
   Button,
   Card,
   CardBody,
@@ -54,17 +55,28 @@ class Profile extends Component {
       .catch(() => flash('Fail To Delete', 'flash-error'))
   }
   
-  channelIds = () => this.state.profiles.map(profile => 
-    <ListGroupItem className="channelId" key={profile._id}>
-      <ChannelID
-        user={this.props.user}
-        profile={profile}
-        flash={this.props.flash}
-        channelId={profile.channelId}
-        remove={this.remove}
-        save={Update} />
-    </ListGroupItem>
-  )
+  channelIds = () => {
+    let count = 0
+    return this.state.profiles.map(profile => {
+      count++
+      return (
+        <Animation
+          type="fadeInUp"
+          delay={.12*count + 's'}
+          key={profile._id}>
+          <ListGroupItem className="channelId" >
+            <ChannelID
+              user={this.props.user}
+              profile={profile}
+              flash={this.props.flash}
+              channelId={profile.channelId}
+              remove={this.remove}
+              save={Update} />
+          </ListGroupItem>
+        </Animation>
+      )
+    })
+  }
 
   render () {
     const { channelIds } = this.state

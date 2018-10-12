@@ -18,10 +18,11 @@ class Home extends Component {
 
   render () {
     return (
-      <div className="Homepage container m-5 p-1">
-        Home
-        <Search />
+      <div className="Homepage container m-5 p-5">
+        <h1>Home</h1>
+        {/* <Search /> */}
         {/* <SearchResult /> */}
+        <p className="m-4 text-size-4"> Welcome !!! To YoutubeX</p>
       </div>
     )
   }

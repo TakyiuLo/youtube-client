@@ -7,6 +7,7 @@ import apiUrl from '../../apiConfig'
 
 import './AuthForms.scss'
 import {
+  Animation,
   Container,
   Row,
   Col,
@@ -57,50 +58,52 @@ class SignUp extends Component {
     const {email, password, passwordConfirmation} = this.state
 
     return (
-      <Row className="auth-form">
-        <Col md="12">
-          <Card>
-            <CardBody>
-              <div className="blue-grey-text text-center">
-                <h3 className="mb-5">
-                  <strong>Sign up</strong>
-                </h3>
-              </div>
-              <Input
-                name="email"
-                onChange={this.handleChange}
-                value={email}
-                label="Type Your email"
-                type="email"
-                size="sm"/>
-              <Input
-                name="password"
-                onChange={this.handleChange}
-                value={password}
-                label="Type Your password"
-                type="password"
-                size="sm"/>
-              <Input
-                name="passwordConfirmation"
-                onChange={this.handleChange}
-                value={passwordConfirmation}
-                label="Confirm Your password"
-                type="password"
-                size="sm"/>
-              <Row className="d-flex align-items-center mb-4">
-                <Col md="12" className="text-center">
-                  <Button 
-                    type="submit"
-                    onClick={this.signUp}
-                    className="btn btn-primary btn-block btn-rounded z-depth-1">
-                    Register
-                  </Button>
-                </Col>
-              </Row>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+      <Animation type="bounceInUp">
+        <Row className="auth-form">
+          <Col md="12">
+            <Card>
+              <CardBody>
+                <div className="blue-grey-text text-center">
+                  <h3 className="mb-5">
+                    <strong>Sign up</strong>
+                  </h3>
+                </div>
+                <Input
+                  name="email"
+                  onChange={this.handleChange}
+                  value={email}
+                  label="Type Your email"
+                  type="email"
+                  size="sm"/>
+                <Input
+                  name="password"
+                  onChange={this.handleChange}
+                  value={password}
+                  label="Type Your password"
+                  type="password"
+                  size="sm"/>
+                <Input
+                  name="passwordConfirmation"
+                  onChange={this.handleChange}
+                  value={passwordConfirmation}
+                  label="Confirm Your password"
+                  type="password"
+                  size="sm"/>
+                <Row className="d-flex align-items-center mb-4">
+                  <Col md="12" className="text-center">
+                    <Button 
+                      type="submit"
+                      onClick={this.signUp}
+                      className="btn btn-primary btn-block btn-rounded z-depth-1">
+                      Register
+                    </Button>
+                  </Col>
+                </Row>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      </Animation>
     )
   }
 }

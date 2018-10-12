@@ -69,7 +69,7 @@ class SignIn extends Component {
           <Animation 
             onMouseEnter={this.mouseEnter}
             onMouseLeave={this.mouseEnter}
-            type={mouseEnter ? '' : 'tadax'}
+            type={mouseEnter ? '' : 'tada'}
             infinite>
             <Card>
               <CardBody>
