@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import './Home.scss'
 
-import { Button } from 'mdbreact'
+import { Button, Fa } from 'mdbreact'
 
 class Home extends Component {
   constructor() {
@@ -22,7 +22,12 @@ class Home extends Component {
         <h1>Home</h1>
         {/* <Search /> */}
         {/* <SearchResult /> */}
-        <p className="m-4 text-size-4"> Welcome !!! To YoutubeX</p>
+        <p className="m-4 text-size-4">Welcome !!! To YoutubeX</p>
+        <Fa
+          icon="arrow-right"
+          size="lg"
+        />
+        <h2>Nav System</h2>
       </div>
     )
   }

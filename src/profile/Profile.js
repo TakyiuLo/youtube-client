@@ -21,7 +21,8 @@ class Profile extends Component {
     super()
     
     this.state = {
-      profiles: []
+      profiles: [],
+      animation: false
     }
   }
   
@@ -33,7 +34,7 @@ class Profile extends Component {
     const { user, flash } = this.props
     await Index(user)
       .then((res) => {
-        this.setState({ profiles: res.data.profiles })
+        this.setState({ profiles: res.data.profiles, animation: true })
         console.log('Profiles', res.data.profiles)
       })
       .catch(err => flash('Fail To get profiles', 'flash-error'))
@@ -57,12 +58,13 @@ class Profile extends Component {
   
   channelIds = () => {
     let count = 0
-    return this.state.profiles.map(profile => {
+    
+    const items = this.state.profiles.map(profile => {
+      console.log(this.state.animation)
       count++
       return (
         <Animation
-          type="fadeInUp"
-          delay={.12*count + 's'}
+          type={count%2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
           key={profile._id}>
           <ListGroupItem className="channelId" >
             <ChannelID
@@ -76,6 +78,7 @@ class Profile extends Component {
         </Animation>
       )
     })
+    return items
   }
 
   render () {
