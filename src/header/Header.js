@@ -58,12 +58,12 @@ class Header extends Component {
             Profile
           </NavLink>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <NavLink to="/playlist">
             <Fa className="mr-2" icon="youtube-play" size="xs" />
             Playlist
           </NavLink>
-        </NavItem>
+        </NavItem> */}
         <NavItem>
           <Dropdown size="md">
             <DropdownToggle nav caret>
