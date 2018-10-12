@@ -35,7 +35,7 @@ class Profile extends Component {
     await Index(user)
       .then((res) => {
         this.setState({ profiles: res.data.profiles, animation: true })
-        console.log('Profiles', res.data.profiles)
+        // console.log('Profiles', res.data.profiles)
       })
       .catch(err => flash('Fail To get profiles', 'flash-error'))
   }
@@ -60,7 +60,7 @@ class Profile extends Component {
     let count = 0
     
     const items = this.state.profiles.map(profile => {
-      console.log(this.state.animation)
+      // console.log(this.state.animation)
       count++
       return (
         <Animation

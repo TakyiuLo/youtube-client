@@ -8,8 +8,8 @@ class Oauthcallback extends Component {
   }  
 
   render () {
-    console.log('this.props', this.props)
-    console.log('this.props.location.search', this.props.location.search)
+    // console.log('this.props', this.props)
+    // console.log('this.props.location.search', this.props.location.search)
     // remove '?' at the beginning
     const search = this.props.location.search.substr(1)
     // split by '&'
@@ -23,8 +23,8 @@ class Oauthcallback extends Component {
       // leave it unmodify
       return param
     })
-    console.log('hash', hashSearchParams)
-    console.log('Window', window)
+    // console.log('hash', hashSearchParams)
+    // console.log('Window', window)
     window.opener.postMessage(hashSearchParams, '*')
     
     return (

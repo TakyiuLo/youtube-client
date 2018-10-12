@@ -25,7 +25,7 @@ class Playlist extends Component {
   }
   
   componentDidMount() {
-    console.log('Playlist mount success')
+    // console.log('Playlist mount success')
     const { flash, user } = this.props
     
     // get permission url
@@ -41,7 +41,7 @@ class Playlist extends Component {
         const windowThatWasOpened = window.open(url, 'Please sign in with Google', 'width=500px,height:700px')
         // listen for the code, the code will be use for getting a token
         const codeListener = (res) => {
-        	console.log('message', res.data)
+        	// console.log('message', res.data)
           windowThatWasOpened.close()
           window.removeEventListener('message', codeListener)
           const code = res.data.code
@@ -50,14 +50,13 @@ class Playlist extends Component {
           getToken(user, code)
             .then((res) => {
               // token: here
-              console.log('Token', res.data.data.access_token)
+              // console.log('Token', res.data.data.access_token)
               // get playlist
               return getPlaylist(user, res.data.data.access_token)
             })
             .then((response) => {
-              console.log('Playlist: ', response.data.data.filteredPlaylists)
+              // console.log('Playlist: ', response.data.data.filteredPlaylists)
               this.setState({ playlists: response.data.data.filteredPlaylists })
-              
             })
             .catch(console.error)
         }
