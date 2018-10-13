@@ -24,8 +24,8 @@ class Oauthcallback extends Component {
       return param
     })
     // console.log('hash', hashSearchParams)
-    // console.log('Window', window)
-    window.opener.postMessage(hashSearchParams, '*')
+    console.log('Window', window)
+    window.opener && window.opener.postMessage(hashSearchParams, '*')
     
     return (
       <div className="container m-5 p-2">
