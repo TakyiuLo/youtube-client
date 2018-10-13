@@ -16,7 +16,6 @@ const clientUrl = () => {
   }
 }
 
-// Must use HashRouters because Google is unable to authorize hash routes
 const appJsx = (
   <Router basename={clientUrl()}>
     <App />
