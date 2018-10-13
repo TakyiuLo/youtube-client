@@ -17,6 +17,8 @@
     }
     .DropdownMenu {
       background: $primary-color;
+      animation-duration: .3s;
+      
       & .dropdown-item:hover {
         background: $sub-color;
       }

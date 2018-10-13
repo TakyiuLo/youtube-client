@@ -15,7 +15,8 @@ import {
   DropdownMenu,
   DropdownItem,
   Fa,
-  MenuItemLink
+  MenuItemLink,
+  Animation
 } from 'mdbreact'
 import { LinkContainer } from 'react-router-bootstrap'
 import VisibilitySensor from 'react-visibility-sensor'
@@ -69,7 +70,7 @@ class Header extends Component {
             <DropdownToggle nav caret>
               <Fa icon="cog" size="xs" />
             </DropdownToggle>
-            <DropdownMenu className="DropdownMenu" right={isWideEnough}>
+            <DropdownMenu className="DropdownMenu animated fadeIn" right={isWideEnough}>
               <DropdownItem>
                 <NavLink to="/change-password">
                   Change Password

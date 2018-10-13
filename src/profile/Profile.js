@@ -47,7 +47,10 @@ class Profile extends Component {
     const { profiles } = this.state
     const { user, flash } = this.props
     await Post(user)
-      .then(res => { this.setState({ profiles: [...profiles, res.data.profile] })})
+      .then(res => { this.setState({ 
+        profiles: [...profiles, res.data.profile], 
+        animation: false
+      })})
       .catch(() => flash('Fail To Create', 'flash-error'))
   }
   
@@ -63,7 +66,6 @@ class Profile extends Component {
     let count = 0
     
     const items = this.state.profiles.map(profile => {
-      // console.log(this.state.animation)
       count++
       return (
         <Animation
@@ -90,13 +92,17 @@ class Profile extends Component {
     const { channelIds } = this.state
     const { user, flash } = this.props
     return (
-      <Card className="Profile container m-5 p-1">
-        <CardBody>
-          <CardTitle>Profile</CardTitle>
-          {this.state.profiles && <ListGroup>{this.channelIds()}</ListGroup>}
-          <Button className="cl" onClick={this.newId}>Add Channel Id</Button>
-        </CardBody>
-      </Card>
+      <Animation
+        type='fadeIn'
+        duration='1s'>
+        <Card className="Profile container m-5 p-1">
+          <CardBody>
+            <CardTitle>Profile</CardTitle>
+            {this.state.profiles && <ListGroup>{this.channelIds()}</ListGroup>}
+            <Button className="cl" onClick={this.newId}>Add Channel Id</Button>
+          </CardBody>
+        </Card>
+      </Animation>
     )
   }
 }
