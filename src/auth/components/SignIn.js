@@ -66,11 +66,11 @@ class SignIn extends Component {
     return (
       <Row className="auth-form">
         <Col md="12">
-          <Animation 
+          <Animation
             onMouseEnter={this.mouseEnter}
             onMouseLeave={this.mouseEnter}
-            type={mouseEnter ? '' : 'tada'}
-            infinite>
+            duration='0.3s'
+            type='fadeInDown'>
             <Card>
               <CardBody>
                 <div className="blue-grey-text text-center">

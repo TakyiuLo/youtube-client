@@ -58,7 +58,9 @@ class SignUp extends Component {
     const {email, password, passwordConfirmation} = this.state
 
     return (
-      <Animation type="bounceInUp">
+      <Animation 
+        type="fadeInUp"
+        duration='0.3s'>
         <Row className="auth-form">
           <Col md="12">
             <Card>

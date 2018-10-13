@@ -34,7 +34,10 @@ class Profile extends Component {
     const { user, flash } = this.props
     await Index(user)
       .then((res) => {
-        this.setState({ profiles: res.data.profiles, animation: true })
+        this.setState({ 
+          profiles: res.data.profiles,
+          animation: true 
+        })
         // console.log('Profiles', res.data.profiles)
       })
       .catch(err => flash('Fail To get profiles', 'flash-error'))
@@ -64,8 +67,10 @@ class Profile extends Component {
       count++
       return (
         <Animation
-          type={count%2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
-          key={profile._id}>
+          type='fadeInUp'
+          key={profile._id}
+          delay={this.state.animation && count*0.1 + 's' }
+          duration='0.3s'>
           <ListGroupItem className="channelId" >
             <ChannelID
               user={this.props.user}
