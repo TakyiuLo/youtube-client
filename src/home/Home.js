@@ -20,14 +20,8 @@ class Home extends Component {
     return (
       <div className="Homepage container m-5 p-5">
         <h1>Home</h1>
-        {/* <Search /> */}
+        <Search />
         {/* <SearchResult /> */}
-        <p className="m-4 text-size-4">Welcome !!! To YoutubeX</p>
-        <Fa
-          icon="arrow-right"
-          size="lg"
-        />
-        <h2>Nav System</h2>
       </div>
     )
   }
