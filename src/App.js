@@ -71,6 +71,9 @@ class App extends Component {
           <Route user={user} path='/oauthcallback' render={() => (
             <Oauthcallback flash={this.flash} user={user}/>
           )} />
+          <Route user={user} path='/youtube-client/oauthcallback' render={() => (
+            <Oauthcallback flash={this.flash} user={user}/>
+          )} />
           <AuthenticatedRoute user={user} path='/playlist' render={() => (
             <Playlist flash={this.flash} user={user} />
           )} />
