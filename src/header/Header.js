@@ -16,7 +16,9 @@ import {
   DropdownItem,
   Fa,
   MenuItemLink,
-  Animation
+  Animation,
+  HamburgerToggler,
+  Button
 } from 'mdbreact'
 import { LinkContainer } from 'react-router-bootstrap'
 import VisibilitySensor from 'react-visibility-sensor'
@@ -68,7 +70,8 @@ class Header extends Component {
         <NavItem>
           <Dropdown size="md">
             <DropdownToggle nav caret>
-              <Fa icon="cog" size="xs" />
+              <Fa className={!isWideEnough && 'mr-2'} icon="cog" size="xs" />
+              { !isWideEnough && 'Settings' }
             </DropdownToggle>
             <DropdownMenu className="DropdownMenu animated fadeIn" right={isWideEnough}>
               <DropdownItem>
@@ -128,7 +131,15 @@ class Header extends Component {
             <strong>YoutubeX</strong>
           </NavbarBrand>
           <VisibilitySensor onChange={this.visibleChange}>
-            <NavbarToggler onClick={this.onClick} />
+            <React.Fragment>
+              {/* <NavbarToggler className="hamburger" onClick={this.onClick} /> */}
+              <label 
+                className={`menu-toggler ${collapse && 'isOpen'}`}
+                onClick={this.onClick}>
+                <span></span>
+                <span></span>
+              </label>
+            </React.Fragment>
           </VisibilitySensor>
           <Collapse isOpen={collapse} navbar>
             <NavbarNav left>{alwaysOptions}</NavbarNav>
@@ -136,6 +147,7 @@ class Header extends Component {
               {user && <NavItem><NavLink to='/'>Welcome, {user.email}</NavLink></NavItem>}
               
               {user ? authenticatedOptions : unauthenticatedOptions}
+              {/* <NavItem className="menu-space"></NavItem> */}
             </NavbarNav>
           </Collapse>
         </Navbar>

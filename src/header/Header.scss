@@ -15,10 +15,44 @@
         height: 100% !important;
       }
     }
+    .menu-toggler {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      & span {
+        background: $primary-scent;
+        padding: 1px;
+        margin: 3px;
+        width: auto;
+        height: auto;
+        border-radius: 1px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+        transition: all .1s ease-out;
+      }
+      
+      &.isOpen {
+        & span {
+          padding: 1px;
+          margin: 2px;
+        }
+        & span:first-child {
+          transform: translateY(3px) rotate(45deg);
+        }
+        & span:last-child {
+          transform: translateY(-3px) rotate(-45deg);
+        }
+      }
+    }
+    .menu-space {
+      height: 100vh;
+    }
     .DropdownMenu {
       background: $primary-color;
       animation-duration: .3s;
-      
       & .dropdown-item:hover {
         background: $sub-color;
       }
