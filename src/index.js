@@ -6,7 +6,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbreact/dist/css/mdb.css'
 
 import App from './App'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 
 const clientUrl = () => {
   if (window.location.hostname === 'localhost') {
