@@ -69,7 +69,7 @@ class App extends Component {
             <Profile flash={this.flash} user={user} />
           )} />
           <Route user={user} path='/oauthcallback' render={() => (
-            <Oauthcallback flash={this.flash} user={user}/>
+            <Oauthcallback flash={this.flash}/>
           )} />
           <AuthenticatedRoute user={user} path='/playlist' render={() => (
             <Playlist flash={this.flash} user={user} />
