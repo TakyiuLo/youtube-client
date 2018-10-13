@@ -132,13 +132,12 @@ class Header extends Component {
           </NavbarBrand>
           <VisibilitySensor onChange={this.visibleChange}>
             <React.Fragment>
-              {/* <NavbarToggler className="hamburger" onClick={this.onClick} /> */}
-              <label 
-                className={`menu-toggler ${collapse && 'isOpen'}`}
-                onClick={this.onClick}>
-                <span></span>
-                <span></span>
-              </label>
+              <NavbarToggler className="hamburger d-hidden" onClick={this.onClick}>
+                { !isWideEnough && <label className={`menu-toggler ${collapse && 'isOpen'}`}>
+                  <span></span>
+                  <span></span>
+                </label> }
+              </NavbarToggler>
             </React.Fragment>
           </VisibilitySensor>
           <Collapse isOpen={collapse} navbar>
