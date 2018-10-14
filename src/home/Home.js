@@ -36,6 +36,7 @@ class Home extends Component {
     // remove redirect param
     if (hashSearchParams.redirect === 'oauthcallback') {
       console.log('trying to redirect to oauthcallback')
+      const redirectPath = hashSearchParams.redirect
       delete hashSearchParams['redirect']
       const arrRmRedirect = []
       Object.keys(hashSearchParams).forEach((key) => {
@@ -47,7 +48,7 @@ class Home extends Component {
       console.log('hash to array', strParams)
       // ?redirect=oauthcallback&code=
       // delete hashSearchParams['redirect'] ?'+ hashSearchParams.join('&')
-      this.props.history.push('/oauthcallback?'+ strParams)
+      this.props.history.push(`/${redirectPath}?${strParams}`)
     }
   }
   
