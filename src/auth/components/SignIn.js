@@ -16,7 +16,8 @@ import {
   Card,
   CardBody,
   ModalFooter,
-  Animation
+  Animation,
+  Spinner
 } from 'mdbreact'
 
 class SignIn extends Component {
@@ -26,7 +27,8 @@ class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
-      mouseEnter: false
+      mouseEnter: false,
+      onload: false,
     }
   }
 
@@ -44,16 +46,18 @@ class SignIn extends Component {
   signIn = event => {
     event.preventDefault()
 
-    const { email, password } = this.state
+    const { email, password, onload } = this.state
     const { flash, history, setUser } = this.props
-
-    signIn(this.state)
-      .then(res => res.ok ? res : new Error())
-      .then(res => res.json())
-      .then(res => setUser(res.user))
-      .then(() => flash(messages.signInSuccess, 'flash-success'))
-      .then(() => history.push('/'))
-      .catch(() => flash(messages.signInFailure, 'flash-error'))
+    this.setState({ onload: !onload })
+    // signIn(this.state)
+    //   .then(res => res.ok ? res : new Error())
+    //   .then(res => res.json())
+    //   .then(res => setUser(res.user))
+    //   .then(() => this.setState({ onload: false }))
+    //   .then(() => flash(messages.signInSuccess, 'flash-success'))
+    //   // .then(() => history.push('/'))
+    //   .catch(() => flash(messages.signInFailure, 'flash-error'))
+    //   .catch(() => this.setState({ onload: false }))
   }
   
   mouseEnter = () => {
@@ -61,7 +65,7 @@ class SignIn extends Component {
   }
   
   render () {
-    const { email, password, mouseEnter } = this.state
+    const { email, password, mouseEnter, onload } = this.state
     
     return (
       <Row className="auth-form">
@@ -97,9 +101,11 @@ class SignIn extends Component {
                     <Button 
                       type="submit"
                       onClick={this.signIn}
-                      className="btn btn-primary btn-block btn-rounded z-depth-1">
+                      className={`btn btn-primary btn-block btn-rounded z-depth-1 ${onload && 'onload'}`}>
                       Login
                     </Button>
+                    <Fa size="lg" icon='cog'/>
+                    <Spinner blue big />
                   </Col>
                 </Row>
               </CardBody>

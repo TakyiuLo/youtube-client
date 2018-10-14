@@ -51,10 +51,10 @@ class App extends Component {
         <main className="container">
           <Switch>
             <Route path='/sign-up' render={() => (
-              <SignUp flash={this.flash} setUser={this.setUser} />
+              <SignUp flash={this.flash} user={user} setUser={this.setUser} />
             )} />
             <Route path='/sign-in' render={() => (
-              <SignIn flash={this.flash} setUser={this.setUser} />
+              <SignIn flash={this.flash} user={user} setUser={this.setUser} />
             )} />
             <AuthenticatedRoute user={user} path='/sign-out' render={() => (
               <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />

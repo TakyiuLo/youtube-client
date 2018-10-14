@@ -17,6 +17,7 @@
       font-weight: 300;
     }
     & input {
+      width: 100% !important;
       border-color: $text !important;
       &:focus:not([readonly]) { /* input box underline color */
         box-shadow: 0 1px 0 0 $text;
@@ -25,6 +26,7 @@
     & label {
       color: $text !important;
     }
+    
     & button[type='submit'] {
       background: $primary-color !important;
       color: $text-auto !important;
