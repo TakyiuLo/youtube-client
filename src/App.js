@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
-import { Route, Link, Switch } from 'react-router-dom'
+import { Route, Link, Switch, Redirect } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -13,6 +13,7 @@ import Home from './home/Home'
 import Profile from './profile/Profile'
 import Playlist from './playlist/Playlist'
 import Oauthcallback from './oauthcallback/Oauthcallback'
+// import OuathcallbackHTML from './oauthcallback.html'
 
 class App extends Component {
   constructor () {

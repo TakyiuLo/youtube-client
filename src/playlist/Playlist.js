@@ -45,7 +45,7 @@ class Playlist extends Component {
           windowThatWasOpened.close()
           // window.removeEventListener('message', codeListener)
           const code = res.data.code
-          
+          // console.log('code is', code)
           // get token
           getToken(user, code)
             .then((res) => {

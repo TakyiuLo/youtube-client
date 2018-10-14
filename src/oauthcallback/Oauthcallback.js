@@ -19,6 +19,9 @@ class Oauthcallback extends Component {
     const { windowOpener } = this.state
     // console.log('this.props', this.props)
     // console.log('this.props.location.search', this.props.location.search)
+    if (!location.search) {
+      return
+    }
     // remove '?' at the beginning
     const search = location.search.substr(1)
     // split by '&'
@@ -63,13 +66,13 @@ class Oauthcallback extends Component {
           authenticated ?
             'Authorization Granted'
             :'Authorization Denied'
-          :<DotLoader 
+          :<div><DotLoader 
             className={override}
             sizeUnit={'px'}
             size={40}
             color={'#007faf'}
             loading={onload}
-          />}
+          />Loading ... </div>}
       </div>
     )
   }

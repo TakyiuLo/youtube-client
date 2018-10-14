@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import Search from './search/search'
 import axios from 'axios'
 
 import './Home.scss'
+
 
 import { Button, Fa, Animation } from 'mdbreact'
 
@@ -14,7 +15,45 @@ class Home extends Component {
     this.state = {
       searchText: ''
     }
-  }  
+  }
+  
+  oauthcallback = () => {
+    console.log('You are at', window.location.href)
+    // remove '?' at the beginning
+    const search = location.search.substr(1)
+    // split by '&'
+    const searchParamsArr = search.split('&')
+    const hashSearchParams = {}
+    searchParamsArr.map((param) => {
+      // split by '='
+      const keyValueArr = param.split('=')
+      //  hash it
+      hashSearchParams[keyValueArr[0]] = keyValueArr[1]
+      // leave it unmodify
+      return param
+    })
+    
+    // remove redirect param
+    if (hashSearchParams.redirect === 'oauthcallback') {
+      console.log('trying to redirect to oauthcallback')
+      delete hashSearchParams['redirect']
+      const arrRmRedirect = []
+      Object.keys(hashSearchParams).forEach((key) => {
+        const tmpArr = [ key, hashSearchParams[key]]
+        const tmpStr = tmpArr.join('=')
+        arrRmRedirect.push(tmpStr)
+      })
+      const strParams = arrRmRedirect.join('&')
+      console.log('hash to array', strParams)
+      // ?redirect=oauthcallback&code=
+      // delete hashSearchParams['redirect'] ?'+ hashSearchParams.join('&')
+      this.props.history.push('/oauthcallback?'+ strParams)
+    }
+  }
+  
+  componentDidMount () {
+    this.oauthcallback()
+  }
 
   render () {
     return (
