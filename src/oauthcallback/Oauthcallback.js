@@ -10,11 +10,13 @@ class Oauthcallback extends Component {
     this.state = {
       authenticated: false,
       onload: true,
+      windowOpener: window.opener,
     }
   }  
 
   componentDidMount () {
     const { flash, location } = this.props
+    const { windowOpener } = this.state
     // console.log('this.props', this.props)
     // console.log('this.props.location.search', this.props.location.search)
     // remove '?' at the beginning
@@ -31,15 +33,18 @@ class Oauthcallback extends Component {
       return param
     })
     // check if there is a parent window
-    window.opener ?
-      () => {
-        window.opener && window.opener.postMessage(hashSearchParams, '*')
+    // console.log('Code is', hashSearchParams.code)
+    // console.log('Window opener is', windowOpener)
+    
+    windowOpener ?
+      (() => {
+        windowOpener.postMessage(hashSearchParams, '*')
         this.setState({ authenticated: true })
-      }
-      :() => {
+      })()
+      :(() => {
         flash('No parent window found, Please try again', 'flash-error')
-        console.log('window opener', window.opener)
-      }
+        // console.log('window opener', windowOpener)
+      })()
     // remove onload after Granted/Not Access
     this.setState({ onload: false })
   }
