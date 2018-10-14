@@ -18,7 +18,8 @@ class Home extends Component {
   }
   
   oauthcallback = () => {
-    console.log('You are at', window.location.href)
+    // special path for home `/?redirect=oauthcallback&code=`
+    // console.log('You are at', window.location.href)
     // remove '?' at the beginning
     const search = location.search.substr(1)
     // split by '&'
@@ -35,9 +36,11 @@ class Home extends Component {
     
     // remove redirect param
     if (hashSearchParams.redirect === 'oauthcallback') {
-      console.log('trying to redirect to oauthcallback')
+      // console.log('trying to redirect to oauthcallback')
       const redirectPath = hashSearchParams.redirect
+      
       delete hashSearchParams['redirect']
+      
       const arrRmRedirect = []
       Object.keys(hashSearchParams).forEach((key) => {
         const tmpArr = [ key, hashSearchParams[key]]
@@ -45,9 +48,9 @@ class Home extends Component {
         arrRmRedirect.push(tmpStr)
       })
       const strParams = arrRmRedirect.join('&')
-      console.log('hash to array', strParams)
-      // ?redirect=oauthcallback&code=
-      // delete hashSearchParams['redirect'] ?'+ hashSearchParams.join('&')
+      
+      // console.log('hash to array', strParams)
+      // console.log(`/${redirectPath}?${strParams}`)
       this.props.history.push(`/${redirectPath}?${strParams}`)
     }
   }
