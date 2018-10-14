@@ -56,13 +56,10 @@ class SignIn extends Component {
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(res => setUser(res.user))
-      .then(() => this.setState({ onload: false }))
       .then(() => flash(messages.signInSuccess, 'flash-success'))
       .then(() => history.push('/'))
-      .catch(() => {
-        flash(messages.signInFailure, 'flash-error')
-        this.setState({ onload: false })
-      })
+      .catch(() => flash(messages.signInFailure, 'flash-error'))
+      .finally(() => this.setState({ onload: false }))
   }
   
   mouseEnter = () => {
