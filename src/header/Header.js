@@ -70,7 +70,7 @@ class Header extends Component {
         <NavItem>
           <Dropdown size="md">
             <DropdownToggle nav caret>
-              <Fa className={!isWideEnough && 'mr-2'} icon="cog" size="xs" />
+              <Fa className={!isWideEnough ? 'mr-2' : ''} icon="cog" size="xs" />
               { !isWideEnough && 'Settings' }
             </DropdownToggle>
             <DropdownMenu className="DropdownMenu animated fadeIn" right={isWideEnough}>
@@ -123,7 +123,7 @@ class Header extends Component {
         </NavItem>
       </React.Fragment>
     )
-
+    
     return (
       <header className="main-header">
         <Navbar className="Navbar" dark expand="md" scrolling>
@@ -131,14 +131,12 @@ class Header extends Component {
             <strong>YoutubeX</strong>
           </NavbarBrand>
           <VisibilitySensor onChange={this.visibleChange}>
-            {/* Warning: Failed prop type: Invalid prop `className` of type `boolean` supplied to `t`, expected `string`.
-                Due to a different approach on navbar toggler */}
-            <NavbarToggler className="hamburger" onClick={this.onClick}>
-              { !isWideEnough && <label className={`menu-toggler ${collapse && 'isOpen'}`}>
-                <span></span>
-                <span></span>
-              </label> }
-            </NavbarToggler>
+            <label 
+              onClick={this.onClick}
+              className={`menu-toggler ${collapse && 'isOpen'}`}>
+              <span></span>
+              <span></span>
+            </label>
           </VisibilitySensor>
           <Collapse isOpen={collapse} navbar>
             <NavbarNav left>{alwaysOptions}</NavbarNav>
