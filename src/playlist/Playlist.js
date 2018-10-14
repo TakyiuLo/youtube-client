@@ -74,7 +74,7 @@ class Playlist extends Component {
         <div className="embed-responsive embed-responsive-21by9 video mb-2">          
           <iframe 
             className="embed-responsive-item"
-            src={`http://www.youtube.com/embed?listType=playlist&list=${playlist.id}&index=1`}
+            src={`https://www.youtube.com/embed?listType=playlist&list=${playlist.id}&index=1`}
             frameBorder='0'
             allow="autoplay"
           ></iframe>
