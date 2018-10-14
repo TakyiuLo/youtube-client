@@ -131,6 +131,8 @@ class Header extends Component {
             <strong>YoutubeX</strong>
           </NavbarBrand>
           <VisibilitySensor onChange={this.visibleChange}>
+            {/* Warning: Failed prop type: Invalid prop `className` of type `boolean` supplied to `t`, expected `string`.
+                Due to a different approach on navbar toggler */}
             <NavbarToggler className="hamburger" onClick={this.onClick}>
               { !isWideEnough && <label className={`menu-toggler ${collapse && 'isOpen'}`}>
                 <span></span>
