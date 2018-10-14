@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
+import { css } from 'react-emotion'
+import { DotLoader } from 'react-spinners'
 
 class Oauthcallback extends Component {
   constructor() {
     super()
     
     this.state = {
-      authenticated: false
+      authenticated: false,
+      onload: true,
     }
   }  
 
@@ -34,17 +36,35 @@ class Oauthcallback extends Component {
         window.opener && window.opener.postMessage(hashSearchParams, '*')
         this.setState({ authenticated: true })
       }
-      :() => flash('No parent window found, Please try again', 'flash-error')
+      :() => {
+        flash('No parent window found, Please try again', 'flash-error')
+        console.log('window opener', window.opener)
+      }
+    // remove onload after Granted/Not Access
+    this.setState({ onload: false })
   }
 
   render () {
-    const { authenticated } = this.state
-  
+    const { authenticated, onload } = this.state
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    `
+
     return (
       <div className="container m-5 p-2">
-        {authenticated ?
-          'Authorization Granted'
-          :'Authorization Denied'}
+        {!onload ?
+          authenticated ?
+            'Authorization Granted'
+            :'Authorization Denied'
+          :<DotLoader 
+            className={override}
+            sizeUnit={'px'}
+            size={40}
+            color={'#007faf'}
+            loading={onload}
+          />}
       </div>
     )
   }

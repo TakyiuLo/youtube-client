@@ -49,10 +49,13 @@ class ChangePassword extends Component {
 
     changePassword(this.state, user)
       .then(handleErrors)
+      .then(() => this.setState({ onload: false }))
       .then(() => flash(messages.changePasswordSuccess, 'flash-success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.changePasswordFailure, 'flash-error'))
-      .finally(() => this.setState({ onload: false }))
+      .catch(() => {
+        flash(messages.changePasswordFailure, 'flash-error')
+        this.setState({ onload: false })
+      })
   }
 
   render () {

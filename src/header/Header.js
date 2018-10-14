@@ -131,14 +131,12 @@ class Header extends Component {
             <strong>YoutubeX</strong>
           </NavbarBrand>
           <VisibilitySensor onChange={this.visibleChange}>
-            <React.Fragment>
-              <NavbarToggler className="hamburger d-hidden" onClick={this.onClick}>
-                { !isWideEnough && <label className={`menu-toggler ${collapse && 'isOpen'}`}>
-                  <span></span>
-                  <span></span>
-                </label> }
-              </NavbarToggler>
-            </React.Fragment>
+            <NavbarToggler className="hamburger" onClick={this.onClick}>
+              { !isWideEnough && <label className={`menu-toggler ${collapse && 'isOpen'}`}>
+                <span></span>
+                <span></span>
+              </label> }
+            </NavbarToggler>
           </VisibilitySensor>
           <Collapse isOpen={collapse} navbar>
             <NavbarNav left>{alwaysOptions}</NavbarNav>

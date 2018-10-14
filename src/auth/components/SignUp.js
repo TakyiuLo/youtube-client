@@ -54,10 +54,13 @@ class SignUp extends Component {
       .then(handleErrors)
       .then(res => res.json())
       .then(res => setUser(res.user))
+      .then(() => this.setState({ onload: false }))
       .then(() => flash(messages.signUpSuccess, 'flash-success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.signUpFailure, 'flash-error'))
-      .finally(() => this.setState({ onload: false }))
+      .catch(() => {
+        flash(messages.signUpFailure, 'flash-error')
+        this.setState({ onload: false })
+      })
   }
 
   render() {
