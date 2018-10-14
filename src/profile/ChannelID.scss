@@ -20,13 +20,17 @@
   .setup {
     // margin-left: auto;
     transition: all .3s ease-out;
-    & .fa::before {
-      background: transparent;
-    }
-    & .fa:hover {
-      color: red;
-      transform: translate(0, -1px);
-      cursor: pointer;
+    .fa {
+      transition: all .3s ease-out;
+      &:before {
+        background: transparent;
+      }
+      &:hover {
+        font-size: 20px;
+        color: red;
+        transform: translate(0, -1px);
+        cursor: pointer;
+      }
     }
     & .fa-edit:hover {
       color: orange;
