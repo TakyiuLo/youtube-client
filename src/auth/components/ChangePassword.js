@@ -6,6 +6,8 @@ import messages from '../messages'
 import apiUrl from '../../apiConfig'
 
 import './AuthForms.scss'
+import { css } from 'react-emotion'
+import { DotLoader } from 'react-spinners'
 import {
   Container,
   Row,
@@ -26,6 +28,7 @@ class ChangePassword extends Component {
     this.state = {
       oldPassword: '',
       newPassword: '',
+      onload: false,
     }
     this.state.Default = Object.assign({}, this.state)
   }
@@ -42,16 +45,27 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
     const { flash, history, user } = this.props
 
+    this.setState({ onload: true })
+
     changePassword(this.state, user)
       .then(handleErrors)
+      .then(() => this.setState({ onload: false }))
       .then(() => flash(messages.changePasswordSuccess, 'flash-success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.changePasswordFailure, 'flash-error'))
+      .catch(() => {
+        flash(messages.changePasswordFailure, 'flash-error')
+        this.setState({ onload: false })
+      })
   }
 
   render () {
-    const { oldPassword, newPassword } = this.state
-
+    const { oldPassword, newPassword, onload } = this.state
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    `
+    
     return (
       <Row className="auth-form">
         <Col md="12">
@@ -78,12 +92,20 @@ class ChangePassword extends Component {
                 size="sm"/>
               <Row className="d-flex align-items-center mb-4">
                 <Col md="12" className="text-center">
-                  <Button 
-                    type="submit"
-                    onClick={this.changePassword}
-                    className="btn btn-primary btn-block btn-rounded z-depth-1">
-                    Change
-                  </Button>
+                  {!onload ?
+                    <Button 
+                      type="submit"
+                      onClick={this.changePassword}
+                      className="btn btn-primary btn-block btn-rounded z-depth-1">
+                      Login
+                    </Button>
+                    :<DotLoader 
+                      className={override}
+                      sizeUnit={'px'}
+                      size={40}
+                      color={'#007faf'}
+                      loading={onload}
+                    />}
                 </Col>
               </Row>
             </CardBody>

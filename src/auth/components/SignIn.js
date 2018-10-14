@@ -6,6 +6,8 @@ import messages from '../messages'
 import apiUrl from '../../apiConfig'
 
 import './AuthForms.scss'
+import { css } from 'react-emotion'
+import { DotLoader } from 'react-spinners'
 import {
   Container,
   Row,
@@ -16,8 +18,7 @@ import {
   Card,
   CardBody,
   ModalFooter,
-  Animation,
-  Spinner
+  Animation
 } from 'mdbreact'
 
 class SignIn extends Component {
@@ -48,16 +49,20 @@ class SignIn extends Component {
 
     const { email, password, onload } = this.state
     const { flash, history, setUser } = this.props
-    this.setState({ onload: !onload })
-    // signIn(this.state)
-    //   .then(res => res.ok ? res : new Error())
-    //   .then(res => res.json())
-    //   .then(res => setUser(res.user))
-    //   .then(() => this.setState({ onload: false }))
-    //   .then(() => flash(messages.signInSuccess, 'flash-success'))
-    //   // .then(() => history.push('/'))
-    //   .catch(() => flash(messages.signInFailure, 'flash-error'))
-    //   .catch(() => this.setState({ onload: false }))
+    
+    this.setState({ onload: true })
+    
+    signIn(this.state)
+      .then(res => res.ok ? res : new Error())
+      .then(res => res.json())
+      .then(res => setUser(res.user))
+      .then(() => this.setState({ onload: false }))
+      .then(() => flash(messages.signInSuccess, 'flash-success'))
+      .then(() => history.push('/'))
+      .catch(() => {
+        flash(messages.signInFailure, 'flash-error')
+        this.setState({ onload: false })
+      })
   }
   
   mouseEnter = () => {
@@ -66,7 +71,11 @@ class SignIn extends Component {
   
   render () {
     const { email, password, mouseEnter, onload } = this.state
-    
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    `
     return (
       <Row className="auth-form">
         <Col md="12">
@@ -98,14 +107,20 @@ class SignIn extends Component {
                   size="sm" />
                 <Row className="d-flex align-items-center mb-4">
                   <Col md="12" className="text-center">
-                    <Button 
-                      type="submit"
-                      onClick={this.signIn}
-                      className={`btn btn-primary btn-block btn-rounded z-depth-1 ${onload && 'onload'}`}>
-                      Login
-                    </Button>
-                    <Fa size="lg" icon='cog'/>
-                    <Spinner blue big />
+                    {!onload ?
+                      <Button 
+                        type="submit"
+                        onClick={this.signIn}
+                        className="btn btn-primary btn-block btn-rounded z-depth-1">
+                        Login
+                      </Button>
+                      :<DotLoader 
+                        className={override}
+                        sizeUnit={'px'}
+                        size={40}
+                        color={'#007faf'}
+                        loading={onload}
+                      />}
                   </Col>
                 </Row>
               </CardBody>

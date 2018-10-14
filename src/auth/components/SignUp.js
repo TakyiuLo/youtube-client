@@ -6,6 +6,8 @@ import messages from '../messages'
 import apiUrl from '../../apiConfig'
 
 import './AuthForms.scss'
+import { css } from 'react-emotion'
+import { DotLoader } from 'react-spinners'
 import {
   Animation,
   Container,
@@ -27,6 +29,7 @@ class SignUp extends Component {
       email: '',
       password: '',
       passwordConfirmation: '',
+      onload: false,
     }
     this.state.Default = Object.assign({}, this.state)
   }
@@ -43,19 +46,30 @@ class SignUp extends Component {
     const {email, password, passwordConfirmation} = this.state
     const {flash, history, setUser} = this.props
     
+    this.setState({ onload: true })
+    
     signUp(this.state)
       .then(handleErrors)
       .then(() => signIn(this.state))
       .then(handleErrors)
       .then(res => res.json())
       .then(res => setUser(res.user))
+      .then(() => this.setState({ onload: false }))
       .then(() => flash(messages.signUpSuccess, 'flash-success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.signUpFailure, 'flash-error'))
+      .catch(() => {
+        flash(messages.signUpFailure, 'flash-error')
+        this.setState({ onload: false })
+      })
   }
 
   render() {
-    const {email, password, passwordConfirmation} = this.state
+    const {email, password, passwordConfirmation, onload} = this.state
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    `
 
     return (
       <Animation 
@@ -93,12 +107,20 @@ class SignUp extends Component {
                   size="sm"/>
                 <Row className="d-flex align-items-center mb-4">
                   <Col md="12" className="text-center">
-                    <Button 
-                      type="submit"
-                      onClick={this.signUp}
-                      className="btn btn-primary btn-block btn-rounded z-depth-1">
-                      Register
-                    </Button>
+                    {!onload ?
+                      <Button 
+                        type="submit"
+                        onClick={this.signUp}
+                        className="btn btn-primary btn-block btn-rounded z-depth-1">
+                        Login
+                      </Button>
+                      :<DotLoader 
+                        className={override}
+                        sizeUnit={'px'}
+                        size={40}
+                        color={'#007faf'}
+                        loading={onload}
+                      />}
                   </Col>
                 </Row>
               </CardBody>
