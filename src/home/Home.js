@@ -101,17 +101,19 @@ class Home extends Component {
           <h1>Home</h1>
           <Search onload={this.onload} setResults={this.setSearchResult}/>
         </div>
-        <DotLoader 
-          className={override}
-          sizeUnit={'px'}
-          size={40}
-          color={'#007faf'}
-          loading={onload}
-        />
-        <ListGroup className="Videos">
-          {this.state.videos.searchResults && 'Results'}
-          {this.state.videos.length !== 0 && this.videos()}
-        </ListGroup>
+        {onload ?
+          <DotLoader 
+            className={override}
+            sizeUnit={'px'}
+            size={40}
+            color={'#007faf'}
+            loading={onload}
+          />
+          :<ListGroup className="Videos">
+            {this.state.videos.searchResults && 'Results'}
+            {this.state.videos.length !== 0 && this.videos()}
+          </ListGroup>
+        }
       </Animation>
     )
   }
