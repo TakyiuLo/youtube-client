@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { css } from 'react-emotion'
 import { DotLoader } from 'react-spinners'
+import qs from 'qs'
+import axios from 'axios'
+import apiUrl from '../apiConfig'
 
 class Oauthcallback extends Component {
   constructor() {
@@ -38,18 +41,33 @@ class Oauthcallback extends Component {
     // check if there is a parent window
     // console.log('Code is', hashSearchParams.code)
     // console.log('Window opener is', windowOpener)
-    
-    windowOpener ?
-      (() => {
-        windowOpener.postMessage(hashSearchParams, '*')
-        this.setState({ authenticated: true })
-      })()
-      :(() => {
-        flash('No parent window found, Please try again', 'flash-error')
-        // console.log('window opener', windowOpener)
-      })()
-    // remove onload after Granted/Not Access
-    this.setState({ onload: false })
+
+    this.getToken(hashSearchParams.code)
+      .then((res) => {
+        try {
+          // console.log('Token', res.data.token)
+          windowOpener.postMessage(res.data, '*')
+          this.setState({ authenticated: true })
+        } catch (e) {
+          flash('Please try again', 'flash-error')
+          console.error(e)
+        } finally {
+          // remove onload after Granted/Not Access
+          this.setState({ onload: false })
+        }
+      })
+      .catch((err) => this.setState({ onload: false }))
+  }
+  
+  getToken = (code) => {
+    return axios.request({
+      method: 'POST',
+      url: apiUrl + '/grantaccess',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify({ code })
+    })
   }
 
   render () {

@@ -24,45 +24,22 @@ class Playlist extends Component {
     }
   }
   
-  componentDidMount() {
-    // console.log('Playlist mount success')
+  async componentDidMount () {
     const { flash, user } = this.props
     
-    // get permission url
-    getUrl(user)
-      .then((res) => {
-        flash('resquest to /permissionUrl success', 'flash-success')
-        // console.log('permissionUrl: ', res.data.url)
-        return res.data.url
-      })
-      .then(url => {
-        // params: received permission url
-        // then: open a new window for user consent using this url from Google
-        const windowThatWasOpened = window.open(url, 'Please sign in with Google', 'width=500px,height:700px')
-        // listen for the code, the code will be use for getting a token
-        const codeListener = (res) => {
-        	// console.log('message', res.data)
-          windowThatWasOpened.close()
-          window.removeEventListener('message', codeListener)
-          const code = res.data.code
-          console.log('code is', code)
-          // get token
-          getToken(user, code)
-            .then((res) => {
-              // token: here
-              // console.log('Token', res.data.data.access_token)
-              // get playlist
-              return getPlaylist(user, res.data.data.access_token)
-            })
-            .then((response) => {
-              // console.log('Playlist: ', response.data.data.filteredPlaylists)
-              this.setState({ playlists: response.data.data.filteredPlaylists })
-            })
-            .catch(console.error)
-        }
-        window.addEventListener('message', codeListener)
-      })
-      .catch(() => flash('Permission Denied', 'flash-err'))
+    const res = await getUrl(user)
+    const windowThatWasOpened = window.open(res.data.url, 'Please sign in with Google', 'width=500px,height:700px')
+    // listen for token
+    const tokenListener = (res) => {
+      windowThatWasOpened.close()
+      window.removeEventListener('message', tokenListener)
+      const token = res.data.token
+      // get playlist using token
+      getPlaylist(user, token.access_token)
+        .then((response) => { this.setState({ playlists: response.data.playlist.filteredPlaylists })})
+        .catch((err) => flash('Permission Denied: Please try again', 'flash-err'))
+    }
+    window.addEventListener('message', tokenListener)
   }
   
   playlist = () => (
