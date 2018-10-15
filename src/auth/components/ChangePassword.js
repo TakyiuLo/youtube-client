@@ -71,43 +71,45 @@ class ChangePassword extends Component {
         <Col md="12">
           <Card>
             <CardBody>
-              <div className="blue-grey-text text-center">
-                <h3 className="mb-5">
-                  <strong>Change Password</strong>
-                </h3>
-              </div>
-              <Input
-                name="oldPassword"
-                onChange={this.handleChange}
-                label="Type Your Old Password"
-                value={oldPassword}
-                type="password"
-                size="sm"/>
-              <Input
-                name="newPassword"
-                onChange={this.handleChange}
-                value={newPassword}
-                label="Type Your New Password"
-                type="password"
-                size="sm"/>
-              <Row className="d-flex align-items-center mb-4">
-                <Col md="12" className="text-center">
-                  {!onload ?
-                    <Button 
-                      type="submit"
-                      onClick={this.changePassword}
-                      className="btn btn-primary btn-block btn-rounded z-depth-1">
-                      Login
-                    </Button>
-                    :<DotLoader 
-                      className={override}
-                      sizeUnit={'px'}
-                      size={40}
-                      color={'#007faf'}
-                      loading={onload}
-                    />}
-                </Col>
-              </Row>
+              <form action={this.changePassword}>        
+                <div className="blue-grey-text text-center">
+                  <h3 className="mb-5">
+                    <strong>Change Password</strong>
+                  </h3>
+                </div>
+                <Input
+                  name="oldPassword"
+                  onChange={this.handleChange}
+                  label="Type Your Old Password"
+                  value={oldPassword}
+                  type="password"
+                  size="sm"/>
+                <Input
+                  name="newPassword"
+                  onChange={this.handleChange}
+                  value={newPassword}
+                  label="Type Your New Password"
+                  type="password"
+                  size="sm"/>
+                <Row className="d-flex align-items-center mb-4">
+                  <Col md="12" className="text-center">
+                    {!onload ?
+                      <Button 
+                        type="submit"
+                        onClick={this.changePassword}
+                        className="btn btn-primary btn-block btn-rounded z-depth-1">
+                          Login
+                      </Button>
+                      :<DotLoader 
+                        className={override}
+                        sizeUnit={'px'}
+                        size={40}
+                        color={'#007faf'}
+                        loading={onload}
+                      />}
+                  </Col>
+                </Row>
+              </form>
             </CardBody>
           </Card>
         </Col>

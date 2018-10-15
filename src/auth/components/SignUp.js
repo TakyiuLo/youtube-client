@@ -79,50 +79,52 @@ class SignUp extends Component {
           <Col md="12">
             <Card>
               <CardBody>
-                <div className="blue-grey-text text-center">
-                  <h3 className="mb-5">
-                    <strong>Sign up</strong>
-                  </h3>
-                </div>
-                <Input
-                  name="email"
-                  onChange={this.handleChange}
-                  value={email}
-                  label="Type Your email"
-                  type="email"
-                  size="sm"/>
-                <Input
-                  name="password"
-                  onChange={this.handleChange}
-                  value={password}
-                  label="Type Your password"
-                  type="password"
-                  size="sm"/>
-                <Input
-                  name="passwordConfirmation"
-                  onChange={this.handleChange}
-                  value={passwordConfirmation}
-                  label="Confirm Your password"
-                  type="password"
-                  size="sm"/>
-                <Row className="d-flex align-items-center mb-4">
-                  <Col md="12" className="text-center">
-                    {!onload ?
-                      <Button 
-                        type="submit"
-                        onClick={this.signUp}
-                        className="btn btn-primary btn-block btn-rounded z-depth-1">
-                        Login
-                      </Button>
-                      :<DotLoader 
-                        className={override}
-                        sizeUnit={'px'}
-                        size={40}
-                        color={'#007faf'}
-                        loading={onload}
-                      />}
-                  </Col>
-                </Row>
+                <form action={this.signUp}>
+                  <div className="blue-grey-text text-center">
+                    <h3 className="mb-5">
+                      <strong>Sign up</strong>
+                    </h3>
+                  </div>
+                  <Input
+                    name="email"
+                    onChange={this.handleChange}
+                    value={email}
+                    label="Type Your email"
+                    type="email"
+                    size="sm"/>
+                  <Input
+                    name="password"
+                    onChange={this.handleChange}
+                    value={password}
+                    label="Type Your password"
+                    type="password"
+                    size="sm"/>
+                  <Input
+                    name="passwordConfirmation"
+                    onChange={this.handleChange}
+                    value={passwordConfirmation}
+                    label="Confirm Your password"
+                    type="password"
+                    size="sm"/>
+                  <Row className="d-flex align-items-center mb-4">
+                    <Col md="12" className="text-center">
+                      {!onload ?
+                        <Button 
+                          type="submit"
+                          onClick={this.signUp}
+                          className="btn btn-primary btn-block btn-rounded z-depth-1">
+                            Login
+                        </Button>
+                        :<DotLoader 
+                          className={override}
+                          sizeUnit={'px'}
+                          size={40}
+                          color={'#007faf'}
+                          loading={onload}
+                        />}
+                    </Col>
+                  </Row>
+                </form>
               </CardBody>
             </Card>
           </Col>
