@@ -28,14 +28,15 @@ class Playlist extends Component {
     const { flash, user } = this.props
     
     const res = await getUrl(user)
-    const windowThatWasOpened = window.open(res.data.url, 'Please sign in with Google', 'width=500px,height:700px')
+    const windowThatWasOpened = window.open(res.data.url, 'Please sign in with Google', 'width=500,height=700')
     // listen for token
     const tokenListener = (res) => {
       windowThatWasOpened.close()
       window.removeEventListener('message', tokenListener)
       const token = res.data.token
       // get playlist using token
-      getPlaylist(user, token.access_token)
+      
+      token && getPlaylist(user, token.access_token)
         .then((response) => { this.setState({ playlists: response.data.playlist.filteredPlaylists })})
         .catch((err) => flash('Permission Denied: Please try again', 'flash-err'))
     }

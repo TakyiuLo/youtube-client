@@ -28,10 +28,10 @@ class Search extends Component {
     const { searchText } = this.state
     const { setResults } = this.props
     
-    console.log('searchText', searchText)
+    // console.log('searchText', searchText)
     this.searchRequest(searchText)
       .then((res) => {
-        console.log('results', res.data.result)
+        // console.log('results', res.data.result)
         setResults(res.data.result)
       })
       .catch((err) => {console.error('err', err)})

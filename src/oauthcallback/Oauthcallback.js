@@ -20,11 +20,35 @@ class Oauthcallback extends Component {
   componentDidMount () {
     const { flash, location } = this.props
     const { windowOpener } = this.state
+    
     // console.log('this.props', this.props)
     // console.log('this.props.location.search', this.props.location.search)
     if (!location.search) {
       return
     }
+    const params = this.parseURL(location)
+    // check if there is a parent window
+    // console.log('Code is', params.code)
+    // console.log('Window opener is', windowOpener)
+
+    this.getToken(params.code)
+      .then((res) => {
+        try {
+          // console.log('Token', res.data.token)
+          windowOpener.postMessage(res.data, '*')
+          this.setState({ authenticated: true })
+        } catch (e) {
+          flash('Please try again', 'flash-error')
+          // console.error(e)
+        } finally {
+          // remove onload after Granted/Not Access
+          this.setState({ onload: false })
+        }
+      })
+      .catch((err) => this.setState({ onload: false }))
+  }
+  
+  parseURL = (location) => {
     // remove '?' at the beginning
     const search = location.search.substr(1)
     // split by '&'
@@ -38,25 +62,7 @@ class Oauthcallback extends Component {
       // leave it unmodify
       return param
     })
-    // check if there is a parent window
-    // console.log('Code is', hashSearchParams.code)
-    // console.log('Window opener is', windowOpener)
-
-    this.getToken(hashSearchParams.code)
-      .then((res) => {
-        try {
-          // console.log('Token', res.data.token)
-          windowOpener.postMessage(res.data, '*')
-          this.setState({ authenticated: true })
-        } catch (e) {
-          flash('Please try again', 'flash-error')
-          console.error(e)
-        } finally {
-          // remove onload after Granted/Not Access
-          this.setState({ onload: false })
-        }
-      })
-      .catch((err) => this.setState({ onload: false }))
+    return hashSearchParams
   }
   
   getToken = (code) => {
