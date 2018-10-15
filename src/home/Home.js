@@ -5,6 +5,8 @@ import axios from 'axios'
 import './Home.scss'
 import './search.scss'
 import VideoItem from './video'
+import { css } from 'react-emotion'
+import { DotLoader } from 'react-spinners'
 import { Button, Fa, Animation, ListGroup, ListGroupItem } from 'mdbreact'
 
 class Home extends Component {
@@ -14,7 +16,8 @@ class Home extends Component {
     this.state = {
       searchText: '',
       searchResults: {},
-      videos: []
+      videos: [],
+      onload: false,
     }
   }
   
@@ -62,7 +65,10 @@ class Home extends Component {
   
   setSearchResult = (result) => {
     // console.log('searchResult', result)
-    this.setState({ searchResult: result, videos: result.items })
+    this.setState({ 
+      searchResult: result,
+      videos: result.items,
+      onload: false, })
   }
   
   videos = () => {
@@ -77,13 +83,31 @@ class Home extends Component {
     ))
   }
 
+  onload = () => {
+    this.setState({ onload: true })
+  }
+
   render () {
+    const { onload } = this.state
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    `
+    
     return (
       <Animation type='fadeIn'>      
         <div className="Homepage container m-5 p-5">
           <h1>Home</h1>
-          <Search setResults={this.setSearchResult}/>
+          <Search onload={this.onload} setResults={this.setSearchResult}/>
         </div>
+        <DotLoader 
+          className={override}
+          sizeUnit={'px'}
+          size={40}
+          color={'#007faf'}
+          loading={onload}
+        />
         <ListGroup className="Videos">
           {this.state.videos.searchResults && 'Results'}
           {this.state.videos.length !== 0 && this.videos()}

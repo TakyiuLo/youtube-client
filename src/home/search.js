@@ -26,7 +26,9 @@ class Search extends Component {
   search = event => {
     event.preventDefault()
     const { searchText } = this.state
-    const { setResults } = this.props
+    const { setResults, onload } = this.props
+    
+    onload()
     
     // console.log('searchText', searchText)
     this.searchRequest(searchText)
