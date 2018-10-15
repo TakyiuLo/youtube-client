@@ -71,12 +71,13 @@ class Playlist extends Component {
         className="playlistItem"
         key={playlist.id}>
         <h5>{playlist.title}</h5>
-        <div className="embed-responsive embed-responsive-21by9 video mb-2">          
+        <div className="embed-responsive embed-responsive-4by3 video mb-2">          
           <iframe 
             className="embed-responsive-item"
             src={`https://www.youtube.com/embed?listType=playlist&list=${playlist.id}&index=1`}
             frameBorder='0'
             allow="autoplay"
+            allowFullScreen
           ></iframe>
         </div>
       </ListGroupItem>
@@ -86,7 +87,7 @@ class Playlist extends Component {
   render () {
     const { flash, user } = this.props
     return (
-      <ListGroup className="Playlist container m-5 p-1">
+      <ListGroup className="Playlist m-5 p-1">
         Playlist
         {this.state.playlists.length !== 0 && this.playlist()}
       </ListGroup>
