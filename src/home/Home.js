@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
-import Search from './search/search'
+import Search from './search'
 import axios from 'axios'
-
 import './Home.scss'
-
-
-import { Button, Fa, Animation } from 'mdbreact'
+import './search.scss'
+import VideoItem from './video'
+import { Button, Fa, Animation, ListGroup, ListGroupItem } from 'mdbreact'
 
 class Home extends Component {
   constructor() {
     super()
     
     this.state = {
-      searchText: ''
+      searchText: '',
+      searchResults: {},
+      videos: []
     }
   }
   
@@ -58,15 +59,35 @@ class Home extends Component {
   componentDidMount () {
     this.oauthcallback()
   }
+  
+  setSearchResult = (result) => {
+    console.log('searchResult', result)
+    this.setState({ searchResult: result, videos: result.items })
+  }
+  
+  videos = () => {
+    const { searchResult, videos } = this.state
+    console.log('search results', this.state.searchResult)
+    return videos.map((item) => (
+      <ListGroupItem 
+        className="videoItem"
+        key={item.id.videoId}>
+        <VideoItem info={item} />
+      </ListGroupItem>
+    ))
+  }
 
   render () {
     return (
       <Animation type='fadeIn'>      
         <div className="Homepage container m-5 p-5">
           <h1>Home</h1>
-          <Search />
-          {/* <SearchResult /> */}
+          <Search setResults={this.setSearchResult}/>
         </div>
+        <ListGroup className="Videos">
+          {this.state.videos.searchResults && 'Results'}
+          {this.state.videos.length !== 0 && this.videos()}
+        </ListGroup>
       </Animation>
     )
   }

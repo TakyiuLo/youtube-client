@@ -1,0 +1,12 @@
+.videoItem {
+  display: flex;
+  flex-direction: row;
+  & .videoInfo {
+    margin: 20px;
+    & h5 {
+      width: 100%;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 10px;
+    }
+  }
+}
