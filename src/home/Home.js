@@ -61,13 +61,13 @@ class Home extends Component {
   }
   
   setSearchResult = (result) => {
-    console.log('searchResult', result)
+    // console.log('searchResult', result)
     this.setState({ searchResult: result, videos: result.items })
   }
   
   videos = () => {
     const { searchResult, videos } = this.state
-    console.log('search results', this.state.searchResult)
+    // console.log('search results', this.state.searchResult)
     return videos.map((item) => (
       <ListGroupItem 
         className="videoItem"
