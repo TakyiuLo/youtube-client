@@ -4,8 +4,8 @@ and save their favorite channel with a channel id.
 
 # Planning
 - ok 1 user can crud channel id
-- no 2 users can fetch playlist
-- no 3 users can search
+- ok 2 users can fetch playlist
+- ok 3 users can search
 - no 4 users can add to playlist
 - no 5 non-user can search
 - `*no means haven't done yet`
