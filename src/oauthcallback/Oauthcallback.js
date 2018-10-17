@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { css } from 'react-emotion'
 import { DotLoader } from 'react-spinners'
+import { $primaryColor } from '../theme/theme'
 import qs from 'qs'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
@@ -94,7 +95,7 @@ class Oauthcallback extends Component {
             className={override}
             sizeUnit={'px'}
             size={40}
-            color={'#007faf'}
+            color={$primaryColor}
             loading={onload}
           />Loading ... </div>}
       </div>

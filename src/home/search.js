@@ -58,7 +58,7 @@ class Search extends Component {
   render () {
     const { searchText } = this.state
     return (
-      <FormInline className="md-form active-cyan-2" onSubmit={this.search}>
+      <FormInline className="Search md-form active-cyan-2" onSubmit={this.search}>
         <input
           name="searchText"
           value={searchText}

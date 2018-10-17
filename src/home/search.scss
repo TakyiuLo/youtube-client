@@ -1,7 +1,11 @@
 @import '../theme/theme.scss';
 
-.Videos {
-  border-radius: 5px;
-  box-shadow: 0 5px 20px $sub-scent;
-  margin: 20px;
+.Search {
+  & input {
+    border-color: $primary-color !important;
+    margin: 0 !important;
+    &:focus {
+      box-shadow: 0 1px 0 0 $primary-color !important;
+    }
+  }
 }

@@ -1,4 +1,9 @@
+@import '../theme/theme.scss';
+
 .Profile {
-  background: white;
+  background: $light-bg;
   width: auto;
+  & .channelId-btn {
+    background: $primary-color !important;
+  }
 }

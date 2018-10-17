@@ -46,6 +46,12 @@ $charcoal: #ccc;
 
 /* putted here because putting in index.scss doesn't work*/
 @import './theme/theme.scss';
+
 body {
   background: $primary-scent;
+}
+
+#root {
+  min-height: 100vh;
+  
 }

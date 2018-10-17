@@ -1,12 +1,43 @@
-.videoItem {
-  display: flex;
-  flex-direction: row;
-  & .videoInfo {
-    margin: 20px;
-    & h5 {
+@import '../theme/theme.scss';
+
+.Videos {
+  border-radius: 5px;
+  // box-shadow: 0 5px 20px $sub-scent;
+  margin: 20px;
+  .list-group-item {
+    background: lighten($primary-color, 88.5);
+    padding: 0;
+    border: 0;
+    .videoItem {
+      display: flex;
+      flex-direction: row;
+      background: $light-bg;
       width: 100%;
-      border-bottom: 1px solid #e5e5e5;
-      padding: 10px;
+      height: 200px;
+      overflow: hidden;
+      & .video {
+        min-width: 250px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & iframe {
+          background: $primary-color;
+        }
+      }
+      & .videoInfo {
+        margin: 20px;
+        width: 100%;
+        overflow: hidden;
+        & h5 {
+          white-space: nowrap;
+          text-overflow: clip ellipsis;
+          width: 100%;
+          border-bottom: 1px solid #e5e5e5;
+          padding: 10px;
+
+        }
+      }
     }
   }
 }

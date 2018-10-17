@@ -1,11 +1,11 @@
 /* Adjust these to get your theme */
-$primary-color: rgba(0, 127, 175, 1);
-$scent-offset: 48; /* adjust this by 8 seems better: 24 ,32, 56, 72, 88 */
+$primary-color: rgba(#37001a, 1);
+$scent-offset: 75; /* adjust this by 8 seems better: 24 ,32, 56, 72, 88 */
 
 /* use complement or invert */
 $sub-color: lighten(invert($primary-color), 10);
-$primary-scent: lighten($primary-color, $scent-offset);
-$sub-scent: lighten($sub-color, $scent-offset);
+$primary-scent: lighten($primary-color, $scent-offset*1.2);
+$sub-scent: lighten($sub-color, $scent-offset*.4);
 
 $light-bg: rgba(255, 255, 255, .1);
 $dark-bg: rgba(0, 0, 0, .1);

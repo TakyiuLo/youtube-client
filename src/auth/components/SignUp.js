@@ -8,6 +8,7 @@ import apiUrl from '../../apiConfig'
 import './AuthForms.scss'
 import { css } from 'react-emotion'
 import { DotLoader } from 'react-spinners'
+import { $primaryColor } from '../../theme/theme'
 import {
   Animation,
   Container,
@@ -119,7 +120,7 @@ class SignUp extends Component {
                           className={override}
                           sizeUnit={'px'}
                           size={40}
-                          color={'#007faf'}
+                          color={$primaryColor}
                           loading={onload}
                         />}
                     </Col>

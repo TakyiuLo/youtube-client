@@ -7,6 +7,7 @@ import './search.scss'
 import VideoItem from './video'
 import { css } from 'react-emotion'
 import { DotLoader } from 'react-spinners'
+import { $primaryColor } from '../theme/theme'
 import { Button, Fa, Animation, ListGroup, ListGroupItem } from 'mdbreact'
 
 class Home extends Component {
@@ -17,6 +18,7 @@ class Home extends Component {
       searchText: '',
       searchResults: {},
       videos: [],
+      nextPageToken: '',
       onload: false,
     }
   }
@@ -74,14 +76,21 @@ class Home extends Component {
   videos = () => {
     const { searchResult, videos } = this.state
     // console.log('search results', this.state.searchResult)
-    return videos.map((item) => (
-      <ListGroupItem 
-        className="videoItem"
-        key={item.id.videoId}>
-        <VideoItem info={item} />
-      </ListGroupItem>
-    ))
-  }
+    let count = 0
+    return videos.map((item) => {
+      count++
+      return (
+        <Animation 
+          type="fadeInUp"
+          key={item.id.videoId}
+          delay={this.state.animation && count*0.1 + 's' }
+          duration='0.3s'>
+          <ListGroupItem className="">
+            <VideoItem info={item} />
+          </ListGroupItem>
+        </Animation>)
+    }
+    )}
 
   onload = () => {
     this.setState({ onload: true })
@@ -106,7 +115,7 @@ class Home extends Component {
             className={override}
             sizeUnit={'px'}
             size={40}
-            color={'#007faf'}
+            color={$primaryColor}
             loading={onload}
           />
           :<ListGroup className="Videos">

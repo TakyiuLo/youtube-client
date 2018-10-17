@@ -12,15 +12,6 @@
   & h1 {
     grid-area: h1;
   }
-  & form {
-    & input {
-      border-color: $text !important;
-      margin: 0 !important;
-      &:focus:not([readonly]) { /* input box underline color */
-        box-shadow: 0 1px 0 0 $text;
-      }
-    }
-  }
   & p {
     grid-area: p;
   }

@@ -99,7 +99,7 @@ class Profile extends Component {
           <CardBody>
             <CardTitle>Profile</CardTitle>
             {this.state.profiles && <ListGroup>{this.channelIds()}</ListGroup>}
-            <Button className="cl" onClick={this.newId}>Add Channel Id</Button>
+            <Button className="channelId-btn" onClick={this.newId}>Add Channel Id</Button>
           </CardBody>
         </Card>
       </Animation>
