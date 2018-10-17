@@ -52,21 +52,21 @@ class VideoItem extends Component {
               color={$primaryColor}
               loading={onload}
             />}
-          {video.id.videoId && <ReactPlayer
+          {/* {video.id.videoId && <ReactPlayer
             className={onload ? 'd-none' : 'react-player'}
             url={`https://youtube.com/embed/${video.id.videoId}`}
             width='100%'
             height='100%'
             onReady={this.onload}
-          />}
-          {/* <iframe
-            src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1`}
+          />} */}
+          <iframe
+            src={`https://www.youtube.com/embed/${video.id.videoId}`}
             width="250" height="200"
             frameBorder='0'
             allowFullScreen
-            onReady={this.onload}
+            onLoad={this.onload}
             className={onload ? 'd-none' : ''}
-          ></iframe> */}
+          ></iframe>
         </div>
         <div className="videoInfo">
           <h5>{video.snippet.title}</h5>
