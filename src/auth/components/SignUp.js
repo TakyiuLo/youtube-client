@@ -80,7 +80,7 @@ class SignUp extends Component {
           <Col md="12">
             <Card>
               <CardBody>
-                <form action={this.signUp}>
+                <form onSubmit={this.signUp}>
                   <div className="blue-grey-text text-center">
                     <h3 className="mb-5">
                       <strong>Sign up</strong>

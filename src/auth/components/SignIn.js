@@ -87,7 +87,7 @@ class SignIn extends Component {
             type='fadeInDown'>
             <Card>
               <CardBody>
-                <form action={this.signIn}>                  
+                <form onSubmit={this.signIn}>                  
                   <div className="blue-grey-text text-center">
                     <h3 className="mb-5">
                       <strong>Sign In</strong>

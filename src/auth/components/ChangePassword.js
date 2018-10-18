@@ -72,7 +72,7 @@ class ChangePassword extends Component {
         <Col md="12">
           <Card>
             <CardBody>
-              <form action={this.changePassword}>        
+              <form onSubmit={this.changePassword}>        
                 <div className="blue-grey-text text-center">
                   <h3 className="mb-5">
                     <strong>Change Password</strong>
