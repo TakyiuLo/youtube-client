@@ -1,8 +1,10 @@
 @import '../theme/theme.scss';
 
 .Profile {
-  background: $light-bg;
+  background: $dark-bg;
+  box-shadow: 0px 100px 500px #ccc;
   width: auto;
+  
   & .channelId-btn {
     background: $primary-color !important;
   }

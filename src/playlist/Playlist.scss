@@ -1,22 +1,26 @@
-.Playlist {
-  background: white;
-  // width: auto;
-  min-width: 300px;
-  .playlistItem {
+@import '../theme/theme.scss';
 
+.Playlist {
+  min-width: 300px;
+  background: $dark-bg;
+  background-color: $dark-text;
+  color: $light-text;
+  box-shadow: 0px 100px 500px #ccc;
+  padding: 20px !important;
+  border-radius: 3px;
+  .playlistItem {
+    background: transparent;
+    border: 0;
     h5 {
       font-family: 'Open Sans', sans-serif;
+      margin: 5px;
+      margin-bottom: 15px;
+      padding: 5px;
     }
     .video {
-
       margin: 0;
       iframe {
-        // min-width: 300px;
-        // width: 100%;
-        // max-width: 640px;
-        // min-height: 200px;
-        // height: 100%;
-        // max-height: 480px;
+
       }
     }
   }

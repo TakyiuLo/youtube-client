@@ -1,4 +1,8 @@
 @import "../theme/theme.scss";
+.channelId {
+  background: lighten($primary-color, 88.5);
+}
+
 .ChannelID-item {
   margin: 5px;
   padding: 5px;
@@ -7,6 +11,7 @@
   justify-content: center;
   align-items: center;
   border: 0;
+  background: lighten($primary-color, 88.5);
   & .md-form {
     flex-grow: 10;
   }

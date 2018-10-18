@@ -66,8 +66,7 @@ class Playlist extends Component {
     const { flash, user } = this.props
     return (
       <ListGroup className="Playlist m-5 p-1">
-        Playlist
-        {this.state.playlists.length !== 0 && this.playlist()}
+        {this.state.playlists.length === 0 ? 'Playlist' : this.playlist()}
       </ListGroup>
     )
   }
