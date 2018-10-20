@@ -25,3 +25,13 @@
     }
   }
 }
+
+@media(max-width: 768px) {
+  .Playlist {
+    margin: 20px 0px !important;
+    padding: 10px !important;
+    .playlistItem {
+      padding: 10px 10px;
+    }
+  }
+}
