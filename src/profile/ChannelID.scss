@@ -45,3 +45,18 @@
     }
   }
 }
+
+@media(max-width: 768px) {
+  .channelId {
+    padding: 5px;
+    .ChannelID-item {
+      .setup {
+        .fa {
+          &:hover {
+            font-size: inherit;
+          }
+        }
+      }
+    }
+  }
+}

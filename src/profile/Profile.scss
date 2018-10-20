@@ -9,3 +9,12 @@
     background: $primary-color !important;
   }
 }
+
+@media(max-width: 768px) {
+  .Profile {
+    margin: 20px 0 !important;
+    .card-body {
+      padding: 10px;
+    }
+  }
+}
