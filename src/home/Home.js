@@ -106,7 +106,7 @@ class Home extends Component {
     
     return (
       <Animation type='fadeIn'>      
-        <div className="Homepage container m-5 p-5">
+        <div className="Homepage d-flex justify-content-around container m-5 p-5">
           <h1>Home</h1>
           <Search onload={this.onload} setResults={this.setSearchResult}/>
         </div>
