@@ -41,3 +41,25 @@
     }
   }
 }
+
+@media(max-width: 768px) {
+  .list-group-item {
+    .videoItem {
+      flex-direction: column !important;
+      height: auto !important;
+      .video iframe {
+        width: 100%;
+      }
+      .videoInfo {
+        margin: 10px !important;
+        width: auto !important;
+        h5 {
+          white-space: normal !important;
+        }
+        p {
+          
+        }
+      }
+    }
+  }
+}
