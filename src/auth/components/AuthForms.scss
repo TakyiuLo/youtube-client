@@ -10,7 +10,9 @@
   & .card-body { /* actual form */
     border-radius: 3px;
     width: 100% !important; /* Overriding Bootstrap's importants  */
-    background: $sub-scent;
+    background: $dark-bg;
+    box-shadow: 0px 100px 500px #ccc;
+
     & h3 {
       color: $text;
       font-family: 'Open Sans', sans-serif;
@@ -25,8 +27,7 @@
     }
     & label {
       color: $text !important;
-    }
-    
+    }  
     & button[type='submit'] {
       background: $primary-color !important;
       color: $text-auto !important;
