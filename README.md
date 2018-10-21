@@ -6,7 +6,7 @@ and save their favorite channel with a channel id.
 - ok 1 user can crud channel id
 - ok 2 users can fetch playlist
 - ok 3 users can search
-- no 4 users can add to playlist
+- ok 4 users can add to playlist (desktop mode only)
 - ok 5 non-user can search
 - `*no means haven't done yet`
 
