@@ -58,7 +58,7 @@ When a user signed in:
 
 # Future Planning
 Version Two:
-  - Add in pagination to search
+  - Add pagination for search results
   - change channel id to playlist id
 
 # References
