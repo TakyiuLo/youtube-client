@@ -25,7 +25,8 @@ class VideoItem extends Component {
     
     this.state = {
       video: props.info ,
-      onload: true
+      onload: true,
+      isHover: false
     }
   }
   
@@ -67,9 +68,11 @@ class VideoItem extends Component {
     ))
     return playlistsTitles  
   }
+  
+  onHover = () => this.setState({ isHover: !this.state.isHover })
 
   render () {
-    const { video, onload } = this.state
+    const { video, onload, isHover } = this.state
     const { user, history, toSignIn } = this.props
     const override = css`
     display: block;
@@ -107,12 +110,17 @@ class VideoItem extends Component {
         </div>
         <div className="dropdown-container">          
           <div className="parent-container">
-            <div className="child-container">
+            <div
+              className="child-container"
+              onMouseEnter={this.onHover}
+              onMouseLeave={this.onHover}>
               {/* add to playlist */}
               {user ?
                 user.youtubeToken ?
-                  this.playlist(video.id.videoId)
-                  : <div>Please choose your youtube account</div>
+                  isHover ? 
+                    this.playlist(video.id.videoId)
+                    :<div>Add To ...</div>
+                  :<div>Please choose your youtube account</div>
                 :<div onClick={toSignIn}>Add To ...</div>}
             </div>    
           </div>
