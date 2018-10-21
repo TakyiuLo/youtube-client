@@ -58,7 +58,7 @@ When a user signed in:
 
 # Future Planning
 Version Two:
-  - add in OAuth2 for private playlist
+  - Add in pagination to search
   - change channel id to playlist id
 
 # References
