@@ -12,7 +12,7 @@ and save their favorite channel with a channel id.
 
 # Process
 The user can now do crud for their channel id. It is a simple CRUD app built with
-React. Unfortunately, due to short amount time, I wasn't able to build the part 
+React. Unfortunately, due to a short amount of time, I wasn't able to build the part 
 (OAuth2) where the user can manipulate their Youtube account. However, that will
 be built on Version 2. It takes a long time to study OAuth and to get each tiny
 problem-solving.
@@ -25,7 +25,7 @@ through each small problem. And finally, I was able to get a token from OAuth.
 It was tedious. But in the end, I manage to have a success with it. 
 
 Even though it seems like OAuth was quite troublesome, I also had problems
-with communicating both frontend and backend using axios. It took me a while to
+with communicating both frontend and backend using Axios. It took me a while to
 get used to it. Another problem I had with the front end was window manipulation.
 I didn't realize that I had to refresh both of my servers to get the result. There
 were all kind of trial and error to understand the concepts to get the result.
@@ -45,7 +45,7 @@ some concepts. I sometimes use Google, StackOverflow for more guidance.
   - Github
 
 # Wireframe
-[Imgur](https://i.imgur.com/uruqTvm.png)
+![Imgur](https://i.imgur.com/uruqTvm.png)
 
 # User Stories
 Version One:
