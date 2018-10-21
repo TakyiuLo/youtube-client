@@ -34,7 +34,7 @@ class VideoItem extends Component {
   }
   
   addTo = (playlistId, videoId) => {    
-    const { user } = this.props
+    const { user, flash } = this.props
     
     const config = {
       method: 'POST',
@@ -51,8 +51,8 @@ class VideoItem extends Component {
     }
     
     axios.request(config)
-      .then((res) => {})
-      .catch((err) => {})
+      .then((res) => { flash('Saved', 'flash-success') })
+      .catch((err) => { flash('Fail to add to Playlist', 'flash-error') })
     
   }
   

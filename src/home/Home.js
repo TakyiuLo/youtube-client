@@ -88,7 +88,11 @@ class Home extends Component {
           delay={this.state.animation && count*0.1 + 's' }
           duration='0.3s'>
           <ListGroupItem className="">
-            <VideoItem toSignIn={this.toSignIn} user={this.props.user} info={video} />
+            <VideoItem
+              toSignIn={this.toSignIn}
+              user={this.props.user}
+              info={video}
+              flash={this.props.flash} />
           </ListGroupItem>
         </Animation>)
     }
