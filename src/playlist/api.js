@@ -27,7 +27,7 @@ export const getToken = (user, code) => {
 export const getPlaylist = (user, token) => {
   return axios.request({
     method: 'POST',
-    url: apiUrl + '/playlist',
+    url: apiUrl + '/playlists',
     headers: {
       'Content-Type': 'application/json',
       'Authorization':`Token token=${user.token}`
