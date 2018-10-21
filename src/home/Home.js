@@ -72,21 +72,23 @@ class Home extends Component {
       videos: result.items,
       onload: false, })
   }
-  
+  toSignIn = () => {
+    this.props.history.push('/sign-in')
+  }
   videos = () => {
     const { searchResult, videos } = this.state
     // console.log('search results', this.state.searchResult)
     let count = 0
-    return videos.map((item) => {
+    return videos.map((video) => {
       count++
       return (
         <Animation 
           type="fadeInUp"
-          key={item.id.videoId}
+          key={video.id.videoId}
           delay={this.state.animation && count*0.1 + 's' }
           duration='0.3s'>
           <ListGroupItem className="">
-            <VideoItem user={this.props.user} info={item} />
+            <VideoItem toSignIn={this.toSignIn} user={this.props.user} info={video} />
           </ListGroupItem>
         </Animation>)
     }

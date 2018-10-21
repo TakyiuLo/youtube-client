@@ -42,11 +42,11 @@
         // set container width
         width: 100px;
         height: 100%;
-        background: blue;
+        // background: blue;
         & .parent-container {
           width: inherit;
           height: 100%;
-          background: red;
+          // background: red;
           display: block;
           
           // relative position
@@ -55,11 +55,14 @@
           & .child-container {
             width: inherit;
             height: 100%;
-            background: green;
+            background: $primary-color;
+            color: $text-auto;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             margin: 0;
+            overflow: scroll;
             
             // set position
             position: absolute;
@@ -69,6 +72,16 @@
             transition: width .3s ease-in-out, height .3s ease-in-out;
             &:hover {
               width: 300px;
+            }
+            & div {
+              background: $light-bg;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: auto;
+              width: 100%;
+              padding: 20px;
+              box-shadow: 0 2px 2px $light-bg;
             }
           }
         }

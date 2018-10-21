@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
-
+import apiUrl from '../apiConfig'
 import './video.scss'
 import { css } from 'react-emotion'
 import { DotLoader } from 'react-spinners'
@@ -32,10 +32,45 @@ class VideoItem extends Component {
   onload = (event) => {
     this.setState({ onload: false })
   }
+  
+  addTo = (playlistId, videoId) => {    
+    const { user } = this.props
+    
+    const config = {
+      method: 'POST',
+      url: apiUrl + '/addToPlaylist',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Token token=${user.token}`
+      },
+      data: JSON.stringify({
+        token: user.youtubeToken.access_token,
+        playlistId,
+        videoId
+      })
+    }
+    
+    axios.request(config)
+      .then((res) => {})
+      .catch((err) => {})
+    
+  }
+  
+  playlist = (videoId) => {
+    const { user } = this.props
+    const playlistsTitles = user.playlists.map((playlist) => (
+      <div 
+        key={playlist.id}
+        onClick={() => this.addTo(playlist.id, videoId)}>
+        {playlist.title}
+      </div>
+    ))
+    return playlistsTitles  
+  }
 
   render () {
     const { video, onload } = this.state
-    const { user } = this.props
+    const { user, history, toSignIn } = this.props
     const override = css`
     display: block;
     margin: 0 auto;
@@ -57,13 +92,6 @@ class VideoItem extends Component {
               color={$primaryColor}
               loading={onload}
             />}
-          {/* {video.id.videoId && <ReactPlayer
-            className={onload ? 'd-none' : 'react-player'}
-            url={`https://youtube.com/embed/${video.id.videoId}`}
-            width='100%'
-            height='100%'
-            onReady={this.onload}
-          />} */}
           <iframe
             src={`https://www.youtube.com/embed/${video.id.videoId}`}
             width="250" height="200"
@@ -79,10 +107,13 @@ class VideoItem extends Component {
         </div>
         <div className="dropdown-container">          
           <div className="parent-container">
-            <div className="child-container">          
-              {user && user.youtubeToken ?
-                'playlist'
-                :'Add To ...'}
+            <div className="child-container">
+              {/* add to playlist */}
+              {user ?
+                user.youtubeToken ?
+                  this.playlist(video.id.videoId)
+                  : <div>Please choose your youtube account</div>
+                :<div onClick={toSignIn}>Add To ...</div>}
             </div>    
           </div>
         </div>
