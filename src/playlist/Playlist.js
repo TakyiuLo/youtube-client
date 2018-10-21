@@ -25,7 +25,7 @@ class Playlist extends Component {
   }
   
   async componentDidMount () {
-    const { flash, user } = this.props
+    const { flash, user, setUser } = this.props
     
     const res = await getUrl(user)
     const windowThatWasOpened = window.open(res.data.url, 'Please sign in with Google', 'width=500,height=700')
@@ -35,9 +35,14 @@ class Playlist extends Component {
       window.removeEventListener('message', tokenListener)
       const token = res.data.token
       // get playlist using token
-      
       token && getPlaylist(user, token.access_token)
-        .then((response) => { this.setState({ playlists: response.data.playlist.filteredPlaylists })})
+        .then((response) => { 
+          const playlists = response.data.playlist.filteredPlaylists
+          // set playlists
+          this.setState({ playlists })
+          // set User's youtube token
+          setUser({ ...user, youtubeToken: token, playlists})
+        })
         .catch((err) => flash('Permission Denied: Please try again', 'flash-err'))
     }
     window.addEventListener('message', tokenListener)
