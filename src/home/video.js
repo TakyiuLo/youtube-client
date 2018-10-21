@@ -11,7 +11,11 @@ import {
   Fa,
   Animation,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from 'mdbreact'
 import ReactPlayer from 'react-player'
 
@@ -31,6 +35,7 @@ class VideoItem extends Component {
 
   render () {
     const { video, onload } = this.state
+    const { user } = this.props
     const override = css`
     display: block;
     margin: 0 auto;
@@ -45,7 +50,7 @@ class VideoItem extends Component {
       <div className="videoItem">
         <div className="video">          
           {onload &&
-            <DotLoader 
+            <DotLoader
               className={override}
               sizeUnit={'px'}
               size={40}
@@ -71,6 +76,15 @@ class VideoItem extends Component {
         <div className="videoInfo">
           <h5>{video.snippet.title}</h5>
           <p>{video.snippet.description}</p>
+        </div>
+        <div className="dropdown-container">          
+          <div className="parent-container">
+            <div className="child-container">          
+              {user && user.youtubeToken ?
+                'playlist'
+                :'Add To ...'}
+            </div>    
+          </div>
         </div>
       </div>
     )
