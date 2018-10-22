@@ -15,7 +15,9 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  View,
+  Mask
 } from 'mdbreact'
 import ReactPlayer from 'react-player'
 
@@ -26,7 +28,8 @@ class VideoItem extends Component {
     this.state = {
       video: props.info ,
       onload: true,
-      isHover: false
+      isHover: false,
+      loadVideo: false
     }
   }
   
@@ -69,10 +72,13 @@ class VideoItem extends Component {
     return playlistsTitles  
   }
   
-  onHover = () => this.setState({ isHover: !this.state.isHover })
-
+  onHover = () => this.setState({ isHover: true })
+  onHoverLeave = () => this.setState({ isHover: false })
+  
+  loadVideo = () => this.setState({ loadVideo: true })
+  
   render () {
-    const { video, onload, isHover } = this.state
+    const { video, onload, isHover, loadVideo } = this.state
     const { user, history, toSignIn } = this.props
     const override = css`
     display: block;
@@ -95,25 +101,38 @@ class VideoItem extends Component {
               color={$primaryColor}
               loading={onload}
             />}
-          <iframe
-            src={`https://www.youtube.com/embed/${video.id.videoId}`}
-            width="250" height="200"
-            frameBorder='0'
-            allowFullScreen
-            onLoad={this.onload}
-            className={onload ? 'd-none' : ''}
-          ></iframe>
+          {!loadVideo ?      
+            <View zoom hoverable onClick={this.loadVideo}>
+              <img
+                src={`https://img.youtube.com/vi/${video.id.videoId}/0.jpg`}
+                alt={video.snippet.title}
+                onLoad={this.onload}
+                 
+                className="img-fluid" />
+              <Mask className="flex-center">
+                <p className="white-text"></p>
+              </Mask>
+            </View>
+            :<iframe
+              src={`https://www.youtube.com/embed/${video.id.videoId}`}
+              width="250" height="200"
+              frameBorder='0'
+              allowFullScreen
+              onLoad={this.onload}
+              className={onload ? 'd-none' : ''}
+            ></iframe>}
         </div>
         <div className="videoInfo">
           <h5>{video.snippet.title}</h5>
           <p>{video.snippet.description}</p>
         </div>
+        {/* playlist titles */}
         <div className="dropdown-container">          
           <div className="parent-container">
             <div
               className="child-container"
               onMouseEnter={this.onHover}
-              onMouseLeave={this.onHover}>
+              onMouseLeave={this.onHoverLeave}>
               {/* add to playlist */}
               {user ?
                 user.youtubeToken ?

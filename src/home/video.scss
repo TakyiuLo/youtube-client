@@ -25,6 +25,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        & img {
+          width: 250px;
+          height: 200px;
+          &:hover {
+        
+          }
+        }
         & iframe {
           background: $primary-color;
         }

@@ -54,7 +54,7 @@ class Playlist extends Component {
         className="playlistItem"
         key={playlist.id}>
         <h5>{playlist.title}</h5>
-        <div className="embed-responsive embed-responsive-4by3 video mb-2">          
+        <div className="embed-responsive embed-responsive-4by3 video mb-2">       
           <iframe 
             className="embed-responsive-item"
             src={`https://www.youtube.com/embed?listType=playlist&list=${playlist.id}&index=1`}
