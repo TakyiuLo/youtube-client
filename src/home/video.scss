@@ -28,8 +28,9 @@
         & img {
           width: 250px;
           height: 200px;
+          transition: all 0.7s ease;
           &:hover {
-        
+            filter: saturate(1.2) contrast(110%);
           }
         }
         & iframe {

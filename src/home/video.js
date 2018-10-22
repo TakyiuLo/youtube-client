@@ -102,17 +102,12 @@ class VideoItem extends Component {
               loading={onload}
             />}
           {!loadVideo ?      
-            <View zoom hoverable onClick={this.loadVideo}>
-              <img
-                src={`https://img.youtube.com/vi/${video.id.videoId}/0.jpg`}
-                alt={video.snippet.title}
-                onLoad={this.onload}
-                 
-                className="img-fluid" />
-              <Mask className="flex-center">
-                <p className="white-text"></p>
-              </Mask>
-            </View>
+            <img
+              src={`https://img.youtube.com/vi/${video.id.videoId}/0.jpg`}
+              alt={video.snippet.title}
+              onLoad={this.onload}
+              onClick={this.loadVideo}
+              className="img-fluid" />
             :<iframe
               src={`https://www.youtube.com/embed/${video.id.videoId}`}
               width="250" height="200"
@@ -150,3 +145,6 @@ class VideoItem extends Component {
 }
 
 export default VideoItem
+
+
+// 
