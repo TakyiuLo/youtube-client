@@ -138,7 +138,7 @@ class VideoItem extends Component {
                   isHover ? 
                     this.playlist(video.id.videoId)
                     :<div>Add To ...</div>
-                  :<div>Please choose your youtube account</div>
+                  :<div>Please click on playlist for authorization</div>
                 :<div onClick={toSignIn}>Add To ...</div>}
             </div>    
           </div>
