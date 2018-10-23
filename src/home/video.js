@@ -90,10 +90,8 @@ class VideoItem extends Component {
     margin: 0 auto;
     border-color: red;
     `
-    const opts = {
-      width: 250,
-      height: 200,
-    }
+    
+    const AddToMenu = (props) => (<div {...props}>Add To ...</div>)
     
     return (
       <div className="videoItem">
@@ -142,9 +140,11 @@ class VideoItem extends Component {
                 user.youtubeToken ?
                   isHover ? 
                     this.playlist(video.id.videoId)
-                    :<div>Add To ...</div>
-                  :<div>Please click on playlist for authorization</div>
-                :<div onClick={toSignIn}>Add To ...</div>}
+                    :<AddToMenu />
+                  :isHover ? 
+                    <div>Please click on playlist for authorization</div> 
+                    :<AddToMenu />
+                :<AddToMenu onClick={toSignIn} />}
             </div>    
           </div>
         </div>
