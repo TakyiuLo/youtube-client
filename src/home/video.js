@@ -101,15 +101,19 @@ class VideoItem extends Component {
               color={$primaryColor}
               loading={onload}
             />}
-          {!loadVideo ?      
-            <img
-              src={`https://img.youtube.com/vi/${video.id.videoId}/0.jpg`}
-              alt={video.snippet.title}
-              onLoad={this.onload}
-              onClick={this.loadVideo}
-              className="img-fluid" />
+          {!loadVideo ?
+            <View waves onClick={this.loadVideo}>
+              <img
+                src={`https://img.youtube.com/vi/${video.id.videoId}/0.jpg`}
+                alt={video.snippet.title}
+                onLoad={this.onload}
+                className="img-fluid" />
+              <Mask className="flex-center">
+                <Fa icon="youtube-play" size="3x"></Fa>
+              </Mask>
+            </View> 
             :<iframe
-              src={`https://www.youtube.com/embed/${video.id.videoId}`}
+              src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1`}
               width="250" height="200"
               frameBorder='0'
               allowFullScreen
@@ -145,6 +149,3 @@ class VideoItem extends Component {
 }
 
 export default VideoItem
-
-
-// 

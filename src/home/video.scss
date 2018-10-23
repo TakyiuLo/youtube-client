@@ -25,12 +25,28 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        & img {
-          width: 250px;
-          height: 200px;
-          transition: all 0.7s ease;
+        & .view {
           &:hover {
-            filter: saturate(1.2) contrast(110%);
+            img {
+              filter: saturate(1.2) contrast(110%);
+            }
+            .mask {
+              .fa {
+                color: red;
+              }
+            }
+          }
+          img {
+            width: 250px;
+            height: 200px;
+            transition: all 0.7s ease;
+            filter: saturate(0);
+          }
+          .mask {
+            .fa {
+              transition: all 0.7s ease;
+              color: $light-bg;
+            }
           }
         }
         & iframe {
