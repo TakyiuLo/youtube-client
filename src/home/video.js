@@ -63,11 +63,16 @@ class VideoItem extends Component {
   playlist = (videoId) => {
     const { user } = this.props
     const playlistsTitles = user.playlists.map((playlist) => (
-      <div 
+      <Animation
         key={playlist.id}
-        onClick={() => this.addTo(playlist.id, videoId)}>
-        {playlist.title}
-      </div>
+        type="fadeInUp"
+        duration=".3s">
+        <div
+          className="addToPlaylist"
+          onClick={() => this.addTo(playlist.id, videoId)}>
+          {playlist.title}
+        </div>
+      </Animation>
     ))
     return playlistsTitles  
   }
